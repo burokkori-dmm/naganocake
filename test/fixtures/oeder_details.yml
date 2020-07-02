@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sweet_id: 1
+  order_id: 1
+  peace: 1
+  tax_price: 1
+  making_status: MyString
+
+two:
+  sweet_id: 1
+  order_id: 1
+  peace: 1
+  tax_price: 1
+  making_status: MyString
