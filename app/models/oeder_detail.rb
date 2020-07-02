@@ -1,0 +1,2 @@
+class OederDetail < ApplicationRecord
+end
