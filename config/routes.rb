@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :public do
+    resources :orders
+  end
+  namespace :admin do
+    resources :order_details
+  end
+  namespace :admin do
+    resources :orders
+  end
+  namespace :public do
     get 'home/about'
     get 'home/top'
   end
