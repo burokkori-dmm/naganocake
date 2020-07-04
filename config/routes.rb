@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     devise_for :users
     get 'home/about'
     resources :deliverys
-    resources :carts_items
+    resources :carts_item
+    resources :orders
   end
 
   namespace :admin do
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     resources :genres
     resources :sweets
     resources :users
+    resources :orders
+    patch :'order_details'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
