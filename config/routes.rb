@@ -3,12 +3,8 @@ Rails.application.routes.draw do
   namespace :public do
     devise_for :users
     get 'home/about'
-
     resources :deliverys
-
     resources :carts_items
-    get 'sweets/index'
-    get 'sweets/show'
   end
 
   namespace :admin do
