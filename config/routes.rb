@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
    root 'public/home#top'
+   namespace :public do
     get 'home/about'
     resources :deliverys
     resources :carts_item
