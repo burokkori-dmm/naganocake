@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'home/about'
+    get 'home/top'
+  end
+  namespace :public do
     resources :deliverys
   end
   namespace :public do
