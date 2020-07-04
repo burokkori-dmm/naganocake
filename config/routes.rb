@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'public/home#top'
   namespace :public do
-    devise_for :users
+    devise_for :users 
     get 'home/about'
     resources :deliverys
     resources :carts_items
