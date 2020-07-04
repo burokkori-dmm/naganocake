@@ -1,6 +1,6 @@
-class CreateOederDetails < ActiveRecord::Migration[5.2]
+class CreateOrederDetails < ActiveRecord::Migration[5.2]
   def change
-    create_table :oeder_details do |t|
+    create_table :oreder_details do |t|
       t.integer :sweet_id
       t.integer :order_id
       t.integer :peace

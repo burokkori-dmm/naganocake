@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'public/home#top'
+
+   root 'public/home#top'
+   namespace :public do
     get 'home/about'
     resources :deliverys
     resources :cart_items
@@ -17,7 +19,6 @@ Rails.application.routes.draw do
     resources :users
     resources :orders
     patch 'admin/orders/:id/order_details/:id' => 'admin/order_details#update'
-
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
