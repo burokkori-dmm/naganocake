@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
   namespace :public do
-    get 'orders/new'
-    get 'orders/show'
-    get 'orders/create'
-    get 'orders/success'
+    resources :orders
   end
   namespace :admin do
-    get 'order_details/update'
+    resources :order_details
   end
   namespace :admin do
-    get 'order/index'
-    get 'order/show'
-    get 'order/update'
+    resources :order
   end
   devise_for :admins
   devise_for :users
