@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'users/new'
+  end
+  namespace :admin do
+    get 'admins/new'
+  end
+  namespace :admin do
+    get 'users/new'
+  end
+  namespace :public do
     get 'sweets/index'
     get 'sweets/show'
   end
