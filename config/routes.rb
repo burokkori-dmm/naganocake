@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
-   root 'public/home#top'
-   namespace :public do
-    devise_for :users
+  root 'public/home#top'
+  namespace :public do
     get 'home/about'
-    resources :deliverys
+    devise_for :users
+    get 'public/users/quit' => 'users#quit'
+    resources :deliveries
     resources :cart_items
+    delete 'public/carts_items' => 'carts_items#destroy_all'
     resources :orders
     get 'public/users/order/confirm' => 'orders#confirm'
     get 'public/users/order/success' => 'orders#success'
-    get 'public/users/quit' => 'users#quit'
-    delete 'public/carts_items' => 'carts_items#destroy_all'
+
   end
 
   namespace :admin do

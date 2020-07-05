@@ -1,6 +1,6 @@
 
 
-<%= form_with model: [:public, @delivery] do |form| %>
+<%= form_for [:public, @delivery] do |form| %>
 
 	<%= form.label :郵便番号 %>
 	<%= form.text_field :postal_code, size: "30×10" %>

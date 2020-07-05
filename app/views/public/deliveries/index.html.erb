@@ -1,0 +1,18 @@
+
+<%= form_for [:public, @delivery] do |form| %>
+
+	<%= form.label :郵便番号ハイフンなし %>
+	<%= form.text_field :postal_code %>
+
+	<%= form.label :住所 %>
+	<%= form.text_field :address, size: "30×10" %>
+
+	<%= form.label :宛名 %>
+	<%= form.text_field :name %>
+
+	<%= form.submit '登録する'%>
+<% end %>
+
+
+
+
