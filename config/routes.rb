@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :deliverys
     resources :cart_items
     resources :orders
-    get 'public/users/order/confirm' => 'public/orders#confirm'
-    get 'public/users/order/success' => 'public/orders#success'
-    get 'public/users/quit' => 'public/users#quit'
-    delete 'public/carts_items' => 'public/carts_items#destroy_all'
+    get 'public/users/order/confirm' => 'orders#confirm'
+    get 'public/users/order/success' => 'orders#success'
+    get 'public/users/quit' => 'users#quit'
+    delete 'public/carts_items' => 'carts_items#destroy_all'
   end
 
   namespace :admin do
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :sweets
     resources :users
     resources :orders
-    patch 'admin/orders/:id/order_details/:id' => 'admin/order_details#update'
+    patch 'admin/orders/:id/order_details/:id' => 'order_details#update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
