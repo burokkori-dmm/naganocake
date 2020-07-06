@@ -1,2 +1,46 @@
-<h1>Public::CartsItems#index</h1>
-<p>Find me in app/views/public/carts_items/index.html.erb</p>
+
+<div class = 'contaiter'>
+	<div class='row'>
+	  <div class='col-xs-3'>
+		<h2>ショッピングカート</h2>
+		  <p><%= link_to 'カートを空にする', public_cart_items_path, method: :delete, data: {conform: "本当に全部削除してもよろしいですか？"}, class: "btn btn-danger" %>
+		  </p>
+		</div>
+
+	  <div class='col-xs-6'>
+		<table ckass='table'>
+		  <thead>
+		    <tr>
+			  <th>商品名</th>
+			  <th>単価(税込)</th>
+			  <th><数量</th>
+			  <th><小計</th>
+			  <th colspan="3"></th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<% @cart_items.each do |cart_item| %>
+			<tr>
+			  <td><% attachment_image_tag(cart_item.sweet, :image, :fill, 50, 50, fallback: "no_image-icon.jpg" )%></td>
+			  <td><%= cart_item.sweet.tax_free_price %></td>
+			  <td><%= cart_item.sweet.peace %>
+				  <%link_to '変更' , public_cart_items_path, method: :patch, class: "btn btn-primary"%></td>
+			  <td><%= cart_item.sweet%></td>
+			  <td><%= link_to'削除', public_cart_items_path, method: :delete,class: "btn btn-danger" %></td>
+			</tr>
+			<% end %>
+		  </tbody>
+		</table>
+	</div>
+
+	  <div class='col-xs-3'>
+		<p><%link_to '買い物を続ける', public_sweets_path, class: 'btn btn-primary' %>
+		</p>
+		<p>合計金額</p>
+		<p><%= cart_item.sweet.tax_free_price %></p><br>
+		<p><%= link_to '情報入力に進む' public_order_path %>
+		</p>
+	  </div>
+	</div>
+</div>
+
