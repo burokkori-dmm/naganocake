@@ -1,2 +1,26 @@
-<h1>Public::Sweets#index</h1>
-<p>Find me in app/views/public/sweets/index.html.erb</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<h3>ジャンル検索</h3>
+		</div>
+		<div class="col-xs-10">
+			<h3>商品一覧</h3>
+			<p>全※件</p>
+				<table class="">
+					<thead>
+						<th>商品名</th>
+						<th>税抜価格</th>
+					</thead>
+					<tbody>
+						<% @sweets.each do |sweet| %>
+							<tr>
+								<td><%= link_to sweet.name, public_sweet_path(sweet.id) %></td>
+								<td><%= sweet.tax_free_price %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+		</div>
+	</div>
+</div>
