@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliverys
+    resources :sweets, only:[:index, :show]
     resources :cart_items
     resources :orders
     get 'public/users/order/confirm' => 'orders#confirm'

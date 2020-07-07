@@ -1,2 +1,19 @@
-<h1>Admin::Sweets#edit</h1>
-<p>Find me in app/views/admin/sweets/edit.html.erb</p>
+<h1>商品情報編集</h1>
+	<%= form_for [:admin,@sweet] do |f| %>
+		<h3>商品画像</h3>
+			<%= f.file_field :image_id %>
+		<h3>商品名</h3>
+			<%= f.text_field :name %>
+		<h3>商品説明</h3>
+			<%= f.text_area :detail %>
+		<h3>ジャンル</h3>
+			<!-- カラムのデフォルトを'選択して下さい'に設定 -->
+			<%= f.collection_select(:genre_id, @genres, :id, :name)  %>
+		<h3>税抜価格</h3>
+			<%= f.text_field :tax_free_price %>
+		<h3>販売ステータス</h3>
+			<!-- カラムのデフォルトを'選択して下さい'に設定 -->
+			<%= f.select(:sale_status, [['販売中',0],['販売停止中',1]])  %>
+
+			<%= f.submit '変更を保存する' %>
+	<% end %>

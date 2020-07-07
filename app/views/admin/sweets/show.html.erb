@@ -1,2 +1,11 @@
-<h1>Admin::Sweets#show</h1>
-<p>Find me in app/views/admin/sweets/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<%= attachment_image_tag @sweet, :image_id_change %>
+
+<%= @sweet.name %>
+<%= @sweet.detail %>
+<%= @sweet.genre_id %>
+<%= @sweet.tax_free_price %>
+<%= @sweet.sale_status %>
+
+<%= link_to "編集する",  edit_admin_sweet_path(@sweet.id) %>

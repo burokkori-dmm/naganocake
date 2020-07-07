@@ -1,2 +1,22 @@
-<h1>Public::Sweets#show</h1>
-<p>Find me in app/views/public/sweets/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			<h3>ジャンル検索</h3>
+		</div>
+		<div class="col-xs-10">
+			<h3><%= @sweet.name %></h3>
+			<h3><%= @sweet.detail %></h3>
+			<!-- 税込価格に計算して表示させてる -->
+			<% price = @sweet.tax_free_price * 1.1 %>
+			<h3>￥<%= price %>(税込)</h3>
+			<select name="peace">
+			  <option value="0">個数選択</option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			</select>
+			<!-- リンク先はカート内商品のindexアクションにしている -->
+			<%= link_to "カートに入れる", public_cart_items_path%>
+		</div>
+	</div>
+</div>
