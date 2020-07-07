@@ -1,0 +1,22 @@
+<body>
+	<div align="center">
+		<h3><strong>本当に退会しますか？</strong></h3><br />
+		<br />
+		<ul>退会すると、会員登録情報や<br />
+			これまでの購入履歴が閲覧できなくなります。<br />
+			退会する場合は、「退会する」をクリックしてください。</ul>
+		<br />
+		<table>
+				<tr>
+					<td>
+					    <%= link_to '/users/edit' do %>
+					    <input class="btn btn-primary" type="submit" value="退会しない">
+					    <% end %>
+				    	<%= link_to 'root_path' do %>
+				    	<input class="btn btn-primary" type="submit" value="退会する">
+				    	<% end %>
+				    </td>
+		        </tr>
+		</table>
+    </div>
+</body>
