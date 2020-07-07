@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
-  root 'public/home#top'
-  namespace :public do
+   root 'public/home#top'
+   namespace :public do
+    devise_for :users, controllers: { sessions: 'public/users/sessions', 
+                                       registrations: 'public/users/registrations', 
+                                       passwords: 'public/users/passwords' }
     get 'home/about'
-    devise_for :users
+    resources :users
     get 'public/users/quit' => 'users#quit'
+    put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliveries
+    resources :sweets, only:[:index, :show]
     resources :cart_items
     delete 'public/carts_items' => 'carts_items#destroy_all'
     resources :orders
@@ -15,7 +20,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    devise_for :admins
+    devise_for :admins, controllers: { sessions: 'admin/admins/sessions', 
+                                       registrations: 'admin/admins/registrations', 
+                                       passwords: 'admin/admins/passwords' }
     resources :genres
     resources :sweets
     resources :users

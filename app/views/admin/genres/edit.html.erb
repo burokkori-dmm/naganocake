@@ -1,2 +1,11 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<h1>ジャンル編集</h1>
+				<%= form_for [:admin,@genre] do |f| %>
+					<%= f.label :ジャンル %>
+					<%= f.text_field :name %>
+					<!-- true falseで合ってる？そもそも:true :falseの場所は何を表している？-->
+					<%= f.radio_button :genre_status, :true %>
+					<%= f.label :genre_status, :"有効" %>
+					<%= f.radio_button :genre_status, :false %>
+					<%= f.label :genre_status, :"無効" %>
+					<%= f.submit '変更を保存する' %>
+				<% end %>

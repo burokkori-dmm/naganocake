@@ -1,2 +1,23 @@
-<h1>Admin::Sweets#index</h1>
-<p>Find me in app/views/admin/sweets/index.html.erb</p>
+<h1>商品一覧</h1>
+	<table class="">
+		<thead>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</thead>
+		<tbody>
+			<% @sweets.each do |sweet| %>
+				<tr>
+					<td><%= sweet.id %></td>
+					<td><%= link_to sweet.name, admin_sweet_path(sweet.id) %></td>
+					<td><%= sweet.tax_free_price %></td>
+					<td><%= sweet.genre_id %></td>
+					<td><%= sweet.sale_status %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+
