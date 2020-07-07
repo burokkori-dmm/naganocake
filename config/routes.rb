@@ -7,15 +7,16 @@ Rails.application.routes.draw do
                                        passwords: 'public/users/passwords' }
     get 'home/about'
     resources :users
+    get 'public/users/quit' => 'users#quit'
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
-    resources :deliverys
+    resources :deliveries
     resources :sweets, only:[:index, :show]
     resources :cart_items
+    delete 'public/carts_items' => 'carts_items#destroy_all'
     resources :orders
     get 'public/users/order/confirm' => 'orders#confirm'
     get 'public/users/order/success' => 'orders#success'
-    get 'public/users/quit' => 'users#quit'
-    delete 'public/carts_items' => 'carts_items#destroy_all'
+
   end
 
   namespace :admin do
