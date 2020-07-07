@@ -1,0 +1,54 @@
+<h2>登録情報編集</h2>
+<%= form_for [:public, @user] do |f| %>
+
+    <form>
+    <h1>名前</h1>
+	<div class="form-group">
+		<label for="firstname">(姓)</label>
+		<input type="firstname" class="form-control" id="firstname" placeholder="(姓)">
+	</div>
+
+	<div class="form-group">
+		<label for="lastname">(名)</label>
+		<input type="lastname" class="form-control" id="lastname" placeholder="(名)">
+	</div>
+
+	<h1>フリガナ</h1>
+	<div class="form-group">
+		<label for="subfirstname">(セイ)</label>
+		<input type="subfirstname" class="form-control" id="subfirstname" placeholder="(セイ)">
+	</div>
+
+	<div class="form-group">
+		<label for="sublastname">(メイ)</label>
+		<input type="sublastname" class="form-control" id="sublastname" placeholder="(メイ)">
+	</div>
+
+	<h1>メールアドレス</h1>
+	<%= f.text_field :email %>
+
+	<h1>郵便番号(ハイフンなし)</h1>
+	<%= f.text_field :postalcode %>
+
+	<h1>住所</h1>
+	<%= f.text_field :address %>
+
+	<h1>電話番号(ハイフンなし)</h1>
+	<%= f.text_field :phonenumber%>
+<% end %>
+<table>
+	<tr>
+		<td>
+		    <%= link_to '/users/edit' do %>
+		    <input class="btn btn-primary" type="submit" value="編集内容を保存する">
+		    <% end %>
+	    	<%= link_to 'root_path' do %>
+	    	<input class="btn btn-primary" type="submit" value="退会する">
+	    	<% end %>
+	    </td>
+    </tr>
+</table>
+
+
+
+
