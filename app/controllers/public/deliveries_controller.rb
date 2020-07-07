@@ -5,17 +5,15 @@ before_action :setup_delivery, only: [:edit, :update, :destroy]
   def index
     #一覧表示(each),新規投稿(form_for)
     @delivery = Delivery.new
-    @deliverys = Delivery.all
+    @deliveries = Delivery.all
   end
 
   def create
     #新規投稿の追加
     @delivery = Delivery.new(delivery_params)
-    if @delivery.save
+    @delivery.user_id = user.id
+    @delivery.save
     redirect_to public_deliveries_path
-    else
-    render "index"
-    end
   end
 
   def edit
@@ -39,11 +37,12 @@ before_action :setup_delivery, only: [:edit, :update, :destroy]
 
 private
   def delivery_params
-    params.require(:delivery).permit(:postal_cade, :address, :name)
+    params.require(:delivery).permit(:postal_cade, :address, :name, :user_id)
   end
 
   def setup_delivery
     @delivery = Delivery.find(params[:id])
+  end
 
 
 end

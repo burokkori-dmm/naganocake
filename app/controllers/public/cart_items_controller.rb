@@ -1,10 +1,14 @@
 class Public::CartItemsController < ApplicationController
-  before_action :setup_cart_item!, only: [:create, :update, :destroy, :destroy_all]
+
+  before_action :setup_cart_item!, only: [:create, :update, :destroy]
 
   def index
-    #カート内商品を表示させる(each_current_cart)
-    @cart_items = current_cart.cart_items
-    #カート商品の定義(application controller )→user_id(どのユーザー),sweet_id(どの商品？)紐付け
+    #カート内商品を表示させる
+    @cart_items =CartItem.all
+    #current_public_user.cart_item(userやsweetを入れたら使える)
+    @total_price = 0
+    #合計価格
+
   end
 
   def create
@@ -32,11 +36,12 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
     #全て削除(余裕があれば非同期)
-    @cart_item.destroy
+    @cart_items = current_cart.cart_item.find_by(sweet_id: params[:sweet_id])
+    @cart_items.destroy
     redirect_to current_cart
   end
 
   def serup_cart_item!
-    @cart_item = current_cart.cart_item.find_by(sweer_id: params[:sweer_id])
+    @cart_item = current_cart.cart_item.find_by(sweet_id: params[:sweet_id])
   end
 end
