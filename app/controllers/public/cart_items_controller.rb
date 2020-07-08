@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
     #全て削除(余裕があれば非同期)
-    @cart_items = current_cart.cart_item.find_by(sweet_id: params[:sweet_id])
+    @cart_items = current_cart.cart_items.find_by(cart_item_id: params[:cart_items])
     @cart_items.destroy
     redirect_to current_cart
   end

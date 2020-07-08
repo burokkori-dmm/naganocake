@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :deliveries
     resources :sweets, only:[:index, :show]
     resources :cart_items
-    delete 'public/carts_items' => 'carts_items#destroy_all'
+    delete 'cart_items' => 'cart_items#destroy_all'
     resources :orders
     get 'public/users/order/confirm' => 'orders#confirm'
     get 'public/users/order/success' => 'orders#success'
