@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
 	before_action :ensure_corrent_user, {only: [:edit, :update]}
-  
+
   def show
       #@user = User.find(:id)
       #@user = current_user
@@ -27,11 +27,11 @@ class Public::UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
   	  params.require(:user).permit(:lastname, :firstname, :sublastname, :subfirstname, :email, :password, :address, :postalcode, :phonenumber)
   end
-  
+
   def ensure_corrent_user
   	  @user = User.find_by(id: params[:id])
   	  if @user.id != current_user.id
