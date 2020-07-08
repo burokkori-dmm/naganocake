@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :orders, dependent: :destroy
   has_many :deliveries, dependent: :destroy
-  has_many :cart_items
+  has_many :cart_items, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -15,4 +15,6 @@ class User < ApplicationRecord
   validates :address, presence: true, length: { maximum: 50, minimum: 20 }
   validates :postalcode, presence: true, length: { maximum: 7 }
   validates :phonenumber, presence: true, length: { maximum: 11 }
+
+
 end
