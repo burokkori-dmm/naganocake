@@ -14,6 +14,9 @@ class Public::OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
+  	unless current_user.nil? || current_user.id == @order.user_id
+			redirect_to orders_path(id: current_user.id)
+		end
   end
 
   def create
@@ -70,10 +73,17 @@ class Public::OrdersController < ApplicationController
   def index
   	@user = User.find(params[:id])
   	@orders = @user.orders
+  	unless current_user.nil? || current_user.id == @user.id
+			redirect_to orders_path(id: current_user.id)
+		end
   end
 
   def confirm
   	@order = Order.new(order_params)
+  	unless current_user.nil? || current_user.id == @order.user_id
+			redirect_to orders_path(id: current_user.id)
+		end
+		@items = @order.order_details
   end
 
    private

@@ -2,11 +2,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-2">
-			<h3>ジャンル検索</h3>
+			<%= render 'public/sweets/template1', genres: @genres %>
 		</div>
 		<div class="col-xs-10">
 			<h3>商品一覧</h3>
-			<p>全※件</p>
+			全<%= @sweets.count %>件
 				<table class="">
 					<thead>
 						<th>商品名</th>

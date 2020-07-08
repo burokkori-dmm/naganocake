@@ -39,7 +39,7 @@ class Admin::SweetsController < ApplicationController
 
   private
   def sweet_params
-      params.require(:sweet).permit(:genre_id, :name, :tax_free_price, :detail, :image_id, :sale_status)
+      params.require(:sweet).permit(:genre_id, :name, :tax_free_price, :detail, :image, :sale_status)
   end
 
 end

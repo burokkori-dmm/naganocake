@@ -1,5 +1,5 @@
 <h4>注文情報確認</h4>
- 	<span style="color:#2d714c;">表示価格は全て税込です。</span>
+ 	<span>表示価格は全て税込です。</span>
 <div class="row">
 	<div class="col-xs-8">
 		<table class="table table-bordered">
@@ -12,10 +12,10 @@
 
 		<% @items.each do |item| %>
 			<tr>
-				<td><%= item.product.name %></td>
-				<td><%= addTax(item.product.price) %></td>
-				<td><%= item.quantity %></td>
-				<td><%= addTax(item.price) %></td>
+				<td><%= item.sweet.name %></td>
+				<td><%= addTax(item.sweet.price) %></td>
+				<td><%= item.peace %></td>
+				<td><%= addTax(item.tax_price) %></td>
 			</tr>
 		<% end %>
 		</table>
@@ -43,13 +43,13 @@
 	<p><%= @order.payment %></p>
 
 <h4>お届け先</h4>
-	<p>〒<%= @order.ship_postal_code %>
-	<%= @order.ship_address %>
-	<%= @order.last_name %> <%= @order.first_name %> 様</p>
+	<p>〒<%= @order.postal_code %>
+	<%= @order.address %>
+	<%= @order.name %>  様</p>
 
 <hr>
 
 <div class="text-center">
-	<%= link_to '注文を確定する', orders_finish_path, class:"btn btn-success" %>
+	<%= link_to '注文を確定する', orders_succes_path, class:"btn btn-success" %>
 </div>
 </div>

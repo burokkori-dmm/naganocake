@@ -46,7 +46,7 @@
 			<td><%= i.object.quantity %></td>
 			<td><%= totalPrice(addTax(i.object.product.price),i.object.quantity) %>円</td>
 			<td>
-				<%= select :making_status, OrederDetail.making_statuss.keys.to_a, include_blank: true %><%= f.submit "更新" %>
+				<%= select :making_status, OrederDetail.making_statuses.keys.to_a, include_blank: true %><%= f.submit "更新" %>
 			</td>
 		</tr>
 <% end %>

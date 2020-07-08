@@ -1,6 +1,6 @@
 class Public::DeliveriesController < ApplicationController
 
-before_action :setup_delivery, only: [:edit, :update, :destroy]
+before_action :setup_delivery, only: [ :update, :destroy]
 
   def index
     #一覧表示(each),新規投稿(form_for)
@@ -11,12 +11,13 @@ before_action :setup_delivery, only: [:edit, :update, :destroy]
   def create
     #新規投稿の追加
     @delivery = Delivery.new(delivery_params)
-    @delivery.user_id = user.id
+ 
     @delivery.save
     redirect_to public_deliveries_path
   end
 
   def edit
+    @delivery = Delivery.new
     #編集ページ(setup_deliveries使用)
   end
 
@@ -37,7 +38,7 @@ before_action :setup_delivery, only: [:edit, :update, :destroy]
 
 private
   def delivery_params
-    params.require(:delivery).permit(:postal_cade, :address, :name, :user_id)
+    params.require(:delivery).permit(:postal_code, :address, :name, :user_id)
   end
 
   def setup_delivery
