@@ -2,8 +2,7 @@ class Public::UsersController < ApplicationController
 	before_action :ensure_corrent_user, {only: [:edit, :update]}
 
   def show
-      #@user = User.find(:id)
-      #@user = current_user
+      @user = User.find(:id)
   end
 
   def hide
@@ -20,6 +19,11 @@ class Public::UsersController < ApplicationController
 
   def update
       @user = User.find(params[:id])
+      if @user.update(user_params)
+         redirect_to user_path(@user.id)
+      else
+         render 'edit'
+      end
   end
 
   def quit
@@ -29,7 +33,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-  	  params.require(:user).permit(:lastname, :firstname, :sublastname, :subfirstname, :email, :password, :address, :postalcode, :phonenumber)
+  	  #params.require(:user).permit(:lastname, :firstname, :sublastname, :subfirstname, :email, :password, :address, :postalcode, :phonenumber)
   end
 
   def ensure_corrent_user

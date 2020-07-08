@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-
-   root 'public/home#top'
-   namespace :public do
-    devise_for :users, controllers: { sessions: 'public/users/sessions', 
+  devise_for :users, controllers: { sessions: 'public/users/sessions', 
                                        registrations: 'public/users/registrations', 
                                        passwords: 'public/users/passwords' }
+
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
+   root 'public/home#top'
+   namespace :public do
     get 'home/about'
-    resources :users
+    resources :users, only:[:show, :edit, :quit]
     get 'public/users/quit' => 'users#quit'
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliveries

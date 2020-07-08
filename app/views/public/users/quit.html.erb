@@ -12,7 +12,7 @@
 					    <%= link_to '/users/edit' do %>
 					    <input class="btn btn-primary" type="submit" value="退会しない">
 					    <% end %>
-				    	<%= link_to 'root_path' do %>
+				    	<%= link_to 'root_path' method: :delete, "data-confirm" do %>
 				    	<input class="btn btn-primary" type="submit" value="退会する">
 				    	<% end %>
 				    </td>
