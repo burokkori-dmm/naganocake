@@ -1,10 +1,12 @@
 class Public::SweetsController < ApplicationController
   def index
   	@sweets = Sweet.all
+  	@genres = Genre.all
   end
 
   def show
   	@sweet = Sweet.find(params[:id])
+  	@genres = Genre.all
   end
 
   # ↓adminでは必要でpublicでは不要？何故？ちなみにこれがあるとshowの表示の際にエラーが出る↓
