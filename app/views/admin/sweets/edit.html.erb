@@ -13,7 +13,7 @@
 			<%= f.text_field :tax_free_price %>
 		<h3>販売ステータス</h3>
 			<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-			<%= f.select(:sale_status, [['販売中',0],['販売停止中',1]])  %>
+			<%= f.select :sale_status, Sweet.sale_statuses.keys %>
 
 			<%= f.submit '変更を保存する' %>
 	<% end %>

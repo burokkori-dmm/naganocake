@@ -1,6 +1,7 @@
 <h1>商品詳細</h1>
 
-<%= attachment_image_tag @sweet, :image_id_change %>
+<%= attachment_image_tag @sweet, :image, :fill, 300, 300, format: 'jpeg' %>
+
 
 <%= @sweet.name %>
 <%= @sweet.detail %>
