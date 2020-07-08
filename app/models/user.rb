@@ -8,11 +8,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :lastname, presence: true, length: { maximum: 7, minimum: 1 }
-  validates :firstname, presence: true, length: { maximum: 7, minimum: 1 }
-  validates :sublastname, presence: true, length: { maximum: 10, minimum: 1 }
-  validates :subfirstname, presence: true, length: { maximum: 10, minimum: 1 }
-  validates :address, presence: true, length: { maximum: 50, minimum: 20 }
-  validates :postalcode, presence: true, length: { maximum: 7 }
-  validates :phonenumber, presence: true, length: { maximum: 11 }
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :sub_last_name, presence: true
+  validates :sub_first_name, presence: true
+  validates :address, presence: true
+  validates :postal_code, presence: true, length: { maximum: 7 }
+  validates :phone_number, presence: true, length: { maximum: 11 }
 end

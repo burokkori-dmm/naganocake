@@ -1,0 +1,54 @@
+<h2><%= @user.first_name, @user.last_name %>の会員情報編集</h2>
+<thead>
+		<tr>
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>フリガナ</th>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>電話番号</th>
+			<th>メールアドレス</th>
+			<th>会員ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= @user.each do |user| %>
+			<tr>
+				<td>
+				  <%= @user.id %>
+				</td>
+                <%= form_for(@newuser) do |f| %>
+				<td>
+					<%= link_to 'admin_users_path(@user)' do %>
+					  <%= @user.last_name, @user.first_name %>
+					<% end %>
+				</td>
+
+				<td>
+					<%= @user.sub_last_name, @user.sub_first_name %>
+				</td>
+
+				<td>
+					<%= @user.postal_code %>
+				</td>
+
+				<td>
+					<%= @user.address %>
+				</td>
+
+				<td>
+					<%= @user.phone_number %>
+				</td>
+
+				<td>
+					<%= @user.email %>
+				</td>
+
+				<td>
+					<%= @user.flag %>
+				</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+	<tbody>
