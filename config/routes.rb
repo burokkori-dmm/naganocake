@@ -10,16 +10,16 @@ Rails.application.routes.draw do
    root 'public/home#top'
    namespace :public do
     get 'home/about'
-    resources :users, only:[:show, :edit, :quit]
-    get 'public/users/quit' => 'users#quit'
+    resources :users, only:[:show, :edit]
+    get 'users/quit' => 'users#quit'
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliveries
     resources :sweets, only:[:index, :show]
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all'
     resources :orders
-    get 'public/users/order/confirm' => 'orders#confirm'
-    get 'public/users/order/success' => 'orders#success'
+    get 'users/order/confirm' => 'orders#confirm'
+    get 'users/order/success' => 'orders#success'
 
   end
 

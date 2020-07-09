@@ -7,6 +7,7 @@ class Public::SweetsController < ApplicationController
   def show
   	@sweet = Sweet.find(params[:id])
   	@genres = Genre.all
+    @cart_item = CartItem.new
   end
 
   # ↓adminでは必要でpublicでは不要？何故？ちなみにこれがあるとshowの表示の際にエラーが出る↓
