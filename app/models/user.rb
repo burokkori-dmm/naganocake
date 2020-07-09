@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   #passwordとpassword_confirmationに入力した２つのパスワードが一致している場合に、userモデルのpassword_digestカラムに暗号化されたpasswordが保存される
-  has_secure_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :orders, dependent: :destroy
