@@ -1,5 +1,6 @@
 class Admin::AdminsController < ApplicationController
   before_action :ensure_current_admin only: [:new, :create]
+  before_action :if_not_admin
   def new
   	  @admin = Admin.new #管理ユーザーを作る
   	  @admin = current_admin
@@ -36,5 +37,11 @@ class Admin::AdminsController < ApplicationController
   
   def admin_params
   	  params.require(:admin).permit(:email, :password)
+  end
+  
+  def if_not_admin
+      redirect_to root_path unless current_user.admin?
+  end
+
 
 end
