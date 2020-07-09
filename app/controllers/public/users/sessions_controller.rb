@@ -40,5 +40,6 @@ class Public::Users::SessionsController < Devise::SessionsController
       #byebug
       public_sweets_path
   end
+
 end
 
