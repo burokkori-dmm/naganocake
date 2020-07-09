@@ -2,10 +2,10 @@
 			<%= form_for [:admin,@genre] do |f| %>
 				<%= f.label :ジャンル %>
 				<%= f.text_field :name %>
-				<!-- true falseで合ってる？そもそも:true :falseの場所は何を表している？-->
-				<%= f.radio_button :genre_status, :true %>
+				<!-- true falseで合ってる？そもそも:true :falseの場所は何を表している？以前は有効がtrue,無効がfalseだった-->
+				<%= f.radio_button :genre_status, :有効 %>
 				<%= f.label :genre_status, :"有効" %>
-				<%= f.radio_button :genre_status, :false %>
+				<%= f.radio_button :genre_status, :無効 %>
 				<%= f.label :genre_status, :"無効" %>
 				<%= f.submit '追加' %>
 			<% end %>
