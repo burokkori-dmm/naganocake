@@ -4,7 +4,7 @@
 		<tr>
 			<th>購入者</th>
 			<td><%= link_to  admins_user_path(@order.id) do %>
-					<%= order.user.last_name %><%= order.user.first_name %>
+					<%= order.name %>
 					<% end %>
 			</td>
 		</tr>
@@ -23,7 +23,7 @@
 		<tr>
 			<th>注文ステータス</th>
 			<td>
-				<%= f.select :order_status, Order.deposit_statuses.keys.map{ |k| k } %>
+				<%= f.select :order_status, Order.deposit_statuses.keys.map{ |k| k } %><%= f.submit '更新する', class:"btn btn-success" %>
 			</td>
 		</tr>
 	</table>
@@ -68,8 +68,5 @@
 		</tr>
 	</table>
 	<hr>
-	<div class="text-center">
-		<%= f.submit '更新する', class:"btn btn-success" %>
-	</div>
 <% end %>
 </div>

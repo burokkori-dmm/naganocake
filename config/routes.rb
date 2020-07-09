@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'public/users/sessions', 
+  devise_for :users, controllers: { sessions: 'public/users/sessions',
                                        registrations: 'public/users/registrations', 
                                        passwords: 'public/users/passwords' }
 
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    devise_for :admins, controllers: { sessions: 'admin/admins/sessions', 
+    devise_for :admins, controllers: { sessions: 'admin/admins/sessions',
                                        registrations: 'admin/admins/registrations', 
                                        passwords: 'admin/admins/passwords' }
     resources :genres

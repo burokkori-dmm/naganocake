@@ -1,10 +1,26 @@
 <h2>注文情報入力</h2>
 <%= form_for [:public, @order] do |f| %>
-
+<%= f.hidden_field :user_id %>
 <h3>支払い方法</h3>
     <div><%= f.radio_button :payment_method, :クレジットカード %>クレジットカード</div>
     <div><%= f.radio_button :payment_method, :銀行振込 %>銀行振込</div>
 <h3>お届け先</h3>
+    <div>
+    <lebel><%= radio_button_tag("_add", "usersAdd") %>ご自身の住所</lebel>
+    <span><%= current_user.postal_code %> <%= current_user.address %>
+    	<br><%= current_user.last_name %> <%= current_user.first_name %></span>
+    </div>
+    <div>
+    	<lebel><%= radio_button_tag("_add", "deliverysAdds") %>登録済住所から選択</lebel>
+    </div>
+          <%= collection_select(Delivery, :id, @addres, :id, :address) %>
+
+    <div><%= radio_button_tag("_add", "newAdd") %>新しいお届け先</div>
+    <%= fields_for :deliverys do |a| %>
+    <div>郵便番号（ハイフンなし）</div><%= a.text_field :postal_code, class:"form-control", id:"inputPostalCode", style:"width:30%;" %>
+    <div>住所</div><%= a.text_field :address, class:"form-control", id:"inputAddress", style:"width:70%;" %>
+    <div>宛名</div><%= a.text_field :name,  class:"form-control col-xs-4", style:"width:30%;" %>
+    <% end %>
 
     <%= f.submit "確認画面へ進む" %>
     <% end %>

@@ -2,7 +2,8 @@ class Public::UsersController < ApplicationController
 	#before_action :ensure_corrent_user, {only: [:edit, :update]}
 
   def show
-      @user = User.find(params[:id])
+
+      @user = current_user
   end
 
   def hide
