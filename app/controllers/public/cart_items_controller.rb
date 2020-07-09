@@ -1,11 +1,12 @@
 class Public::CartItemsController < ApplicationController
 
-  before_action :setup_cart_item!, only: [:create, :update, :destroy]
+  #before_action :setup_cart_item!, only: [:update, :destroy]
 
   def index
     #カート内商品を表示させる
-    @cart_items =CartItem.all
-    #current_public_user.cart_item(userやsweetを入れたら使える)
+    #@cart_items = CartItem.where(user_id: current_user.id)
+    cart_items = CartItem.all
+    @cart_items = current_user.cart_items
     @total_price = 0
     #合計価格
 
@@ -13,36 +14,45 @@ class Public::CartItemsController < ApplicationController
 
 
   def create
-    #もしカート商品に追加したい商品がなかったら新規追加する
-  if @cart_items.blank?
-    @cart_item = current_cart.cart_items.build(sweet_id: params[:sweet_id])
-  end
-    @cart_item.peace += params[:peace].to_i
-    @cart_items.save
-    redirect_to current_cart
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.user_id = current_user.id
+    @cart_item.save
+    redirect_to public_cart_items_path
+
+
+
+
   end
 
   def update
-    #数量変更時の変更(select_tag)
-    #パラムスでpeaceを持ってくる
-    @cart_item.update(peace: params[:peace].to_i)
-    redirect_to current_cart
+    #数量変更時の変更
+    cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
+    cart_item.update(cart_item_params)
+    #cart_item.update(peace: params[:peace].to_i)
+    redirect_to public_cart_items_path
   end
 
   def destroy
     #一部変更(余裕があれば非同期)
+    @cart_item = current_user.cart_items.find(params[:id])
     @cart_item.destroy
-    redirect_to current_cart
+    redirect_to public_cart_items_path
   end
 
   def destroy_all
     #全て削除(余裕があれば非同期)
-    @cart_items = current_cart.cart_items.find_by(cart_item_id: params[:cart_items])
-    @cart_items.destroy
-    redirect_to current_cart
+    cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
+    cart_item.destroy
+    redirect_to public_cart_items_path
   end
 
-  def serup_cart_item!
-    @cart_item = current_cart.cart_item.find_by(sweet_id: params[:sweet_id])
+protected
+  def cart_item_params
+    params.require(:cart_item).permit(:sweet_id, :peace, :user_id)
   end
+
+  def setup_cart_item!
+   # cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
+  end
+
 end

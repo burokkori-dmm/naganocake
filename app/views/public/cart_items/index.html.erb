@@ -3,50 +3,53 @@
 	<div class='row'>
 		<div class='col-4'>
 		<h3>ショッピングカート</h3>
-		  <p style= "text-align: right;"><%= link_to 'カートを空にする', public_cart_items_path(@cart_items), method: :delete, data: {conform: "本当に全部削除してもよろしいですか？"}, class: "btn btn-danger" %>
+		  <p style= "text-align: right;"><%= button_to 'カートを空にする', public_cart_items_path, method: :delete, data: {conform: "本当に全部削除してもよろしいですか？"}, class: "btn btn-danger" %>
 		  </p>
 		</div>
 
 	<div class='col-8'>
 	<table class="table table-striped">
 	  <thead>
-	    <tr>
-	      <th scope="col">商品名</th>
-	      <th scope="col">単価(税込)</th>
-	      <th scope="col">数量</th>
-	      <th scope="col">小計</th>
-	    </tr>
-	  </thead>
+		    <tr>
+		      <th scope="col">商品名</th>
+		      <th scope="col">単価(税込)</th>
+		      <th scope="col">数量</th>
+		      <th scope="col">小計</th>
+		    </tr>
+		  </thead>
 	  <tbody>
-	    <tr>
-	     <% @cart_items.each do |cart_item| %>
-		  <td><%= attachment_image_tag(cart_item.sweet, :image, :fill, 50, 50, format: 'jpg',fallback: "no-image-icon.jpg" )%>
-		  	<%= cart_item.sweet.name %>
-		  </td>
-		  <!--税抜き価格-->
-		  <td><%= @cart_items.sweet.price * 1.1 %>
-		  </td>
-		  <!--税抜き価格-->
-			  <%link_to '変更' , public_cart_items_path, method: :patch, class: "btn btn-primary"%></td>
-		  <td><%= cart_item.sweet%></td>
-		  <td><%= link_to'削除', public_cart_items_path, method: :delete,class: "btn btn-danger" %></td>
-		   <!--それぞれの商品価格-->
-		  <%= cart_item.sweet.tax_free_price %>
-		  <%= @total_price += cart_item.sweet.tax_free_price %>
-		</tr>
+		    <tr>
+		     <% @cart_items.each do |cart_item| %>
+			  <td><%= attachment_image_tag(cart_item.sweet, :image, :fill, 50, 50, format: 'jpg',fallback: "no-image-icon.jpg" )%>
+			  	<%= cart_item.sweet.name %>
+			  </td>
+			  <!--単価(税込)-->
+			  <td><%= (cart_item.sweet.tax_free_price * 1.1).to_i %>円
+			  <!--単価(税込)-->
+			  </td>
+			  <!--数量-->
+			  <td>
+			    <%= form_for cart_item, url: public_cart_item_path, method: :patch do |f| %>
+	              <%= f.select :peace, options_for_select((1..10).to_a, cart_item.peace)%>
+	              <%= f.submit '変更', class: "btn btn-primary"%>
+	            <% end %>
+			  </td>
+			   <!--小計-->
+			  <td>
+			  	<%= (cart_item.sweet.tax_free_price * cart_item.peace * 1.1).to_i %>円
+			    <% @total_price += (cart_item.sweet.tax_free_price * cart_item.peace * 1.1).to_i %>
+			  </td>
+			  <!--小計-->
+			  <td><%= link_to'削除', public_cart_item_path(cart_item), method: :delete,class: "btn btn-danger" %></td>
+			</tr>
 		<% end %>
-	    <tr>
-	      <td><%= attachment_image_tag @sweet, :image, :fill, 50, 50, format: 'jpg',fallback: "no-image-icon.jpg"%>Jacob</td>
-	      <td>Thornton</td>
-	      <td>@fat</td>
-	    </tr>
 	  </tbody>
 	  </table>
 	</div>
 
 	  	<ul style= "list-style: none;">
 	  		<li><%= link_to '買い物を続ける', public_sweets_path, class: 'btn btn-primary' %></li>
-	  		<li style= "text-align: right;" >合計金額<%= (@total_price * 1.1).to_i %></li>
+	  		<li style= "text-align: center;" >合計金額:<%= (@total_price * 1.1).to_i %>円</li>
 	  		<li></li>
 	  		<li></li>
 	  	</ul>

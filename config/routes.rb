@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all'
     resources :orders
-    get 'public/users/order/confirm' => 'orders#confirm'
-    get 'public/users/order/success' => 'orders#success'
+    get 'users/order/confirm' => 'orders#confirm'
+    get 'users/order/success' => 'orders#success'
 
   end
 
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :sweets
     resources :users
     resources :orders
-    patch 'admin/orders/:id/order_details/:id' => 'order_details#update'
+    patch 'orders/:id/order_details/:id' => 'order_details#update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

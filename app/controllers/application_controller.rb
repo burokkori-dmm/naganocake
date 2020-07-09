@@ -8,18 +8,10 @@ class ApplicationController < ActionController::Base
         public_sweets_path(current_user.id)#ログイン後商品一覧ページを指定
     end  
 
-	private
+  private
 
 	def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys:[:last_name, :first_name, :sub_last_name, :sub_first_name, :postal_code, :address, :phone_number, :password, :password_confirmation])
     end
-	
-	def current_cart
-	  if session[:user_id]
-	  	@user = User.find(session[:user_id])
-	  else
-	  	@user = User.create
-	  	session[:user_id] = @user.id
-	  end
-    end
+
 end
