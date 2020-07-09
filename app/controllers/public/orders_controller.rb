@@ -1,15 +1,10 @@
 class Public::OrdersController < ApplicationController
-	before_action :authenticate!
-	before_action :params_check, only: [:index]
 
   def new
-  	@user =current_user
+  	@user = current_user
   	@order = Order.new(user_id: @user.id)
-  	@addres = @user.deliverys
-  	@deliverys = Deliverys.new(user_id: @user.id)
-  	if @user.cart_items.blank?
-  		redirect_to cart_items_path
-  	else
+  	@addres = @user.deliveries
+  	@deliverys = Delivery.new(user_id: @user.id)
   end
 
   def show
@@ -19,47 +14,40 @@ class Public::OrdersController < ApplicationController
 		end
   end
 
+
   def create
   	@order = Order.new(order_params)
   	@user = current_user
-  	@addres = @user.deliverys
+  	@addres = @user.deliveries
   	        if params[:_add] == "usersAdd"
 				@order.address = @user.address
-				@order.name = @user.last_name.@user.first_name
+				@order.name = @user.select('last_name','first_name')
 				@order.postal_code = @user.postal_code
-			elsif params[:_add] == "shipAdds"
-				@ad = @ads.find(params[:ShipToAddress][:id])
+			elsif params[:_add] == "deliveryAdds"
+				@ad = @addres.find(params[:Delivery][:id])
 				@order.address = @ad.address
-				@order.last_name = @ad.last_name
-				@order.first_name = @ad.first_name
+				@order.name = @ad.name
 				@order.postal_code = @ad.postal_code
 			elsif params[:_add] == "newAdd"
-				@ad = Deliverys.new
+				@ad = Delivery.new
 				@ad.user_id = @user.id
-				@ad.address = params[:ship_to_address][:address]
-				@ad.last_name = params[:ship_to_address][:last_name]
-				@ad.first_name = params[:ship_to_address][:first_name]
-				@ad.last_name_kana = params[:ship_to_address][:last_name_kana]
-				@ad.first_name_kana = params[:ship_to_address][:first_name_kana]
-				@ad.postal_code = params[:ship_to_address][:postal_code]
-				@ad.phone = params[:ship_to_address][:phone]
+				@ad.address = params[:deliveries][:address]
+				@ad.name = params[:deliveries][:name]
+				@ad.postal_code = params[:deliveries][:postal_code]
 				@ad.save
 
-				@order.ship_address = params[:ship_to_address][:address]
-				@order.last_name = params[:ship_to_address][:last_name]
-				@order.first_name = params[:ship_to_address][:first_name]
-				@order.last_name_kana = params[:ship_to_address][:last_name_kana]
-				@order.first_name_kana = params[:ship_to_address][:first_name_kana]
-				@order.ship_postal_code = params[:ship_to_address][:postal_code]
+				@order.ship_address = params[:deliveries][:address]
+				@order.name = params[:deliveries][:last_name]
+				@order.ship_postal_code = params[:deliveries][:postal_code]
 			end
 
 
 			item = []
 			@items = @user.cart_items
 				@items.each do |i|
-					item << @order.ordered_items.build(product_id: i.product_id, price: i.price, quantity: i.quantity, product_status: 1)
+					item << @order.order_details.build(sweet_id: i.sweet_id, price: i.price, peace: i.peace, making_status: 1)
 				end
-			OrderedItem.import item
+			OrderDetail.import item
 		if @order.save
 			redirect_to confirm_order_path(@order)
 		else
@@ -68,10 +56,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def success
+  	cart_items = current_user.cart_items
+	cart_items.destroy_all
   end
 
   def index
-  	@user = User.find(params[:id])
+  	@user = current_user
   	@orders = @user.orders
   	unless current_user.nil? || current_user.id == @user.id
 			redirect_to orders_path(id: current_user.id)
@@ -88,12 +78,7 @@ class Public::OrdersController < ApplicationController
 
    private
     def item_params
-      params.require(:cart_item).permit(:user_id, :product_id, :quantity, :price)
+      params.require(:cart_item).permit(:user, :sweet, :quantity, :price)
     end
 
-    def user_is_deleted
-      if user_signed_in? && current_user.is_deleted?
-         redirect_to root_path
-      end
-    end
 end

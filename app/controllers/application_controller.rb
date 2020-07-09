@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
     
     def after_sign_in_path_for(resource_or_scope)
     	stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
-        public_sweets_path(current_user.id)#パスを指定したのに指定ページに飛ばない
-    end
+        public_sweets_path(current_user.id)#ログイン後商品一覧ページを指定
+    end  
 
-	private
+  private
 
 	def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys:[:last_name, :first_name, :sub_last_name, :sub_first_name, :postal_code, :address, :phone_number, :password, :password_confirmation])

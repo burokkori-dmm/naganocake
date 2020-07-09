@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'public/users/sessions', 
+  devise_for :users, controllers: { sessions: 'public/users/sessions',
                                        registrations: 'public/users/registrations', 
                                        passwords: 'public/users/passwords' }
 
@@ -10,8 +10,8 @@ Rails.application.routes.draw do
    root 'public/home#top'
    namespace :public do
     get 'home/about'
-    resources :users, only:[:show, :edit]
-    get 'users/quit' => 'users#quit'
+    resources :users
+    get 'users/quit/:id' => 'users#quit'
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliveries
     resources :sweets, only:[:index, :show]
@@ -24,14 +24,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    devise_for :admins, controllers: { sessions: 'admin/admins/sessions', 
+    devise_for :admins, controllers: { sessions: 'admin/admins/sessions',
                                        registrations: 'admin/admins/registrations', 
                                        passwords: 'admin/admins/passwords' }
     resources :genres
     resources :sweets
     resources :users
     resources :orders
-    patch 'admin/orders/:id/order_details/:id' => 'order_details#update'
+    patch 'orders/:id/order_details/:id' => 'order_details#update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

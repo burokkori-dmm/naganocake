@@ -6,27 +6,18 @@
 			<%= render 'public/sweets/template1', genres: @genres %>
 		</div>
 		<div class="col-xs-10">
+			<%= attachment_image_tag @sweet, :image, format: 'jpeg', size: "200x200" %>
 			<h3><%= @sweet.name %></h3>
 			<h3><%= @sweet.detail %></h3>
-			<!-- 税込価格に計算して表示させてる -->
-			<% price = @sweet.tax_free_price * 1.1 %>
-			<h3>￥<%= (price).to_i %>円(税込)</h3>
-			<select name="peace">
-			  <option value="0">個数選択</option>
-			  <option value="1">1</option>
-			  <option value="2">2</option>
-			  <option value="3">3</option>
-			</select>
-			<!-- リンク先はカート内商品のindexアクションにしている -->
-			<%= link_to "カートに入れる", public_cart_items_path%>
+			<!-- 税込価格に計算して表示する -->
+			<% price = (@sweet.tax_free_price * 1.1).to_i %>
+			<h3>￥<%= price %>(税込)</h3>
+			<!-- link_toではなくform_forでカートない商品のcreateアクションへ飛ばす -->
+			<%= form_for @cart_item, url: public_cart_items_path do |f| %>
+		        <%= f.hidden_field :sweet_id, value: @sweet.id %>
+		        <%= f.select :peace, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+		        <%= f.submit "カートに入れる" %>
+    		<% end %>
 		</div>
 	</div>
 </div>
-
-
-
-    <%= form_for @cart_item, url: public_cart_items_path do |f| %>
-        <%= f.hidden_field :sweet_id, value: @sweet.id %>
-        <%= f.select :peace, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる" %>
-    <% end %>

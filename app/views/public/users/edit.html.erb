@@ -39,10 +39,10 @@
 <table>
 	<tr>
 		<td>
-		    <%= link_to '/users/edit' do %>
+		    <%= link_to 'public_user_edit_path(current_user)' do %>
 		    <input class="btn btn-primary" type="submit" value="編集内容を保存する">
 		    <% end %>
-	    	<%= link_to 'root_path' do %>
+	    	<%= link_to 'public_user_quti_path(current_user)' do %>
 	    	<input class="btn btn-primary" type="submit" value="退会する">
 	    	<% end %>
 	    </td>
