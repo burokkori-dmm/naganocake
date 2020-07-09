@@ -12,8 +12,8 @@
 					    <%= link_to '/users/edit' do %>
 					    <input class="btn btn-primary" type="submit" value="退会しない">
 					    <% end %>
-				    	<%= link_to 'root_path' method: :delete, "data-confirm" do %>
-				    	<input class="btn btn-primary" type="submit" value="退会する">
+				    	<% if user_signed_in? && @user.id == current_user.id %>
+                        <%= link_to "退会する", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-primary" type="submit" value="退会する" %>
 				    	<% end %>
 				    </td>
 		        </tr>

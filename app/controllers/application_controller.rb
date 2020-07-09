@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     
     def after_sign_in_path_for(resource_or_scope)
     	stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
-        public_sweets_path(current_user.id)#パスを指定したのに指定ページに飛ばない
+        public_sweets_path(current_user.id)#ログイン後商品一覧ページを指定
     end  
 
 	private

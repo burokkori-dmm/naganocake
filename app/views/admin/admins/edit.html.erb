@@ -1,5 +1,6 @@
+
 <h2><%= @user.first_name, @user.last_name %>の会員情報編集</h2>
-<thead>
+    <thead>
 		<tr>
 			<th>会員ID</th>
 			<th>氏名</th>
@@ -19,7 +20,7 @@
 				</td>
                 <%= form_for(@newuser) do |f| %>
 				<td>
-					<%= link_to 'admin_users_path(@user)' do %>
+					<%= link_to 'admin_users_path(current_user)' do %>
 					  <%= @user.last_name, @user.first_name %>
 					<% end %>
 				</td>
