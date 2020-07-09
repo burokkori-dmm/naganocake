@@ -1,7 +1,7 @@
 <h1>注文履歴一覧</h1>
 <table  class="table table-bordered ">
 		<thead>
-			<tr style="background:#dad7d7;">
+			<tr>
 				<th>注文日</th>
 				<th>配送先</th>
 				<th>注文商品</th>
@@ -20,10 +20,10 @@
 			</td>
 			<td>
 				<% order.order_details.each do |item| %>
-					<%= item.sweet_id.name %><br>
+					<%= item.sweet.name %><br>
 				<% end %>
 			</td>
-			<td><%= addTax(order.order_details.sum(:price)) %>円</td>
+			<td><%= addTax(order.order_details.sum(:tax_price)) %>円</td>
 			<td><%= link_to order_path(order), class: "btn btn-success" do %>表示する<% end %></td>
 		</tr>
 		<% end %>
