@@ -1,7 +1,8 @@
 <h1>商品情報編集</h1>
 	<%= form_for [:admin,@sweet] do |f| %>
 		<h3>商品画像</h3>
-			<%= f.file_field :image_id %>
+			<%= attachment_image_tag @sweet, :image, :fill, 100, 100, format: 'jpeg' %>
+			<%= f.attachment_field :image %>
 		<h3>商品名</h3>
 			<%= f.text_field :name %>
 		<h3>商品説明</h3>

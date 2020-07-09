@@ -11,6 +11,7 @@ class Public::CartItemsController < ApplicationController
 
   end
 
+
   def create
     #もしカート商品に追加したい商品がなかったら新規追加する
   if @cart_items.blank?
