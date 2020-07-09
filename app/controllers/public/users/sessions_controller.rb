@@ -36,4 +36,9 @@ class Public::Users::SessionsController < Devise::SessionsController
       #flash[:error] = "必須項目を入力してください。"
     #end
   #end
+  def after_sign_in_path_for(resource)
+      byebug
+      public_sweets_path
+  end
 end
+
