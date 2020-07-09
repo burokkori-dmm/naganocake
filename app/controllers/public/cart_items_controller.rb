@@ -8,6 +8,7 @@ class Public::CartItemsController < ApplicationController
     cart_items = CartItem.all
     @cart_items = current_user.cart_items
     @total_price = 0
+    @cart_item = CartItem.find(params[:id])
     #合計価格
 
   end
@@ -22,22 +23,21 @@ class Public::CartItemsController < ApplicationController
 
   def update
     #数量変更時の変更
-    cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
+    cart_item = current_user.cart_items.find(params[:id])
     cart_item.update(cart_item_params)
-    #cart_item.update(peace: params[:peace].to_i)
     redirect_to public_cart_items_path
   end
 
   def destroy
     #一部変更(余裕があれば非同期)
-    @cart_item = current_user.cart_items.find(params[:id])
-    @cart_item.destroy
+    cart_item = current_user.cart_items.find(params[:id])
+    cart_item.destroy
     redirect_to public_cart_items_path
   end
 
   def destroy_all
     #全て削除(余裕があれば非同期)
-    cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
+    cart_item = current_user.cart_items
     cart_item.destroy
     redirect_to public_cart_items_path
   end
