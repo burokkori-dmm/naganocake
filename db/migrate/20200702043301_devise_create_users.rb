@@ -39,7 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :postal_code
       t.string :phone_number
-      t.datetime :flag
+      t.boolean :flag, null: false, default: false
       t.timestamps null: false
     end
 
