@@ -1,0 +1,26 @@
+<h1>search1</h1>
+
+	<% @sweets.each do |sweet| %>
+		<% if sweet.genre.name == "チョコレート" %>
+			<table class="">
+				<thead>
+					<th>商品名</th>
+					<th>商品紹介</th>
+					<th>ジャンル</th>
+					<th>価格</th>
+					<th>販売ステータス</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= sweet.name %></td>
+						<td><%= sweet.detail %></td>
+						<td><%= sweet.genre.name %></td>
+						<td>税込価格(税抜価格)
+						<%= (sweet.tax_free_price * 1.1).to_i %>
+						(<%= sweet.tax_free_price %>)
+						<%= sweet.sale_status %></td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
+	<% end %>

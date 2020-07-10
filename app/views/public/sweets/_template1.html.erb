@@ -6,7 +6,7 @@
 		<% @genres.each do |genre| %>
 			<% if genre.genre_status == "有効" %>
 				<tr>
-					<td><%= genre.name %></td>
+					<td><%= link_to genre.name, public_sweet_search_path(genre) %></td>
 				</tr>
 			<% end %>
 		<% end %>
