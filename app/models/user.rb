@@ -9,7 +9,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, presence: true 
+  validates :last_name, presence: true
              #uniquness: true#重複禁止
              #format: {  # 正規表現の設定で、withに指定したパターンにマッチしたもののみ許可している。
                 #with: /\A[a-z0-9]+\z/,
