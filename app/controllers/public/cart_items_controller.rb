@@ -8,7 +8,6 @@ class Public::CartItemsController < ApplicationController
     cart_items = CartItem.all
     @cart_items = current_user.cart_items.page(params[:page]).reverse_order
     @total_price = 0
-    @cart_item = CartItem.find(params[:id])
     #合計価格
 
   end
