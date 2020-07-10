@@ -32,6 +32,7 @@
 	  <tbody>
 	  	<%= @deliveries.each do |delivery| %>
 	    <tr>
+	    	<td><%= attachment_image_tag @sweet,:image, format: 'jpeg', size: "200x200",fallback: "no-image-icon.jpg"  %></td>
 	    	<td><%= delivery.postal_code %></td>
 	        <td><%= delivery.address %></td>
 	        <td><%= delivery.name %></td>
