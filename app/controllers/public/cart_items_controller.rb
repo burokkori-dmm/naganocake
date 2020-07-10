@@ -8,6 +8,7 @@ class Public::CartItemsController < ApplicationController
     cart_items = CartItem.all
     @cart_items = current_user.cart_items.page(params[:page]).reverse_order
     @total_price = 0
+    @cart_item = CartItem.find(params[:id])
     #合計価格
 
   end
@@ -27,12 +28,14 @@ class Public::CartItemsController < ApplicationController
 
   def update
     #数量変更時の変更
+    cart_item = current_user.cart_items.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_to public_cart_items_path, notice: '数量を変更しました！'
   end
 
   def destroy
     #一部変更(余裕があれば非同期)
+    cart_item = current_user.cart_items.find(params[:id])
     cart_item.destroy
     redirect_to public_cart_items_path
   end

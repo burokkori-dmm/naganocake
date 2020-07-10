@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     get 'users/quit/:id' => 'users#quit'
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliveries
-    resources :sweets, only:[:index, :show]
+    resources :sweets, only: [:new, :index, :show]
+    get 'sweets/search/:id' => 'sweets#search',as: 'sweet_search'
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_item_destroy_all'
     resources :orders

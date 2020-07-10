@@ -1,22 +1,30 @@
-<h1>商品新規登録</h1>
+<div class="container">
+	<div class="row">
+			<h1>商品新規登録</h1>
 
-	<%= form_for [:admin,@sweet] do |f| %>
-		<h3>商品画像</h3>
-			<%= f.attachment_field :image %>
-		<h3>商品名</h3>
-			<%= f.text_field :name %>
-		<h3>商品説明</h3>
-			<%= f.text_area :detail %>
-		<h3>ジャンル</h3>
-			<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-			<%= f.collection_select(:genre_id, @genres, :id, :name)  %>
-		<h3>税抜価格</h3>
-			<%= f.text_field :tax_free_price %>
-		<h3>販売ステータス</h3>
-			<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-		<%= f.select :sale_status, Sweet.sale_statuses.keys %>
-		<%= f.submit '新規登録' %>
-	<% end %>
+			<%= form_for [:admin,@sweet] do |f| %>
+				<div class="col-xs-3">
+					<h3>商品画像</h3>
+						<%= f.attachment_field :image %>
+				</div>
+				<div class="col-xs-9">
+					<h3>商品名</h3>
+						<%= f.text_field :name %>
+					<h3>商品説明</h3>
+						<%= f.text_area :detail %>
+					<h3>ジャンル</h3>
+						<!-- カラムのデフォルトを'選択して下さい'に設定 -->
+						<%= f.collection_select(:genre_id, @genres, :id, :name)  %>
+					<h3>税抜価格</h3>
+						<%= f.text_field :tax_free_price %>
+					<h3>販売ステータス</h3>
+						<!-- カラムのデフォルトを'選択して下さい'に設定 -->
+					<%= f.select :sale_status, Sweet.sale_statuses.keys %>
+					<%= f.submit '新規登録' %>
+			<% end %>
+		</div>
+	</div>
+</div>
 
 
 
