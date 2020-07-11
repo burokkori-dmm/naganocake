@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # seeds.rb
 
-User.create!(email: "burokkory@example.jp",
+Admin.create!(email: "burokkory2@example.jp",
              password:  "11111111",
              password_confirmation: "11111111",
              admin: true)

@@ -3,11 +3,11 @@
 <table>
 	<tr>
 		<td>
-			<%= link_to '' do %>
+			<%= link_to '/public/user/edit' do %>
 			   <button type="button" class="btn btn-primary">編集する</button>
 			<% end %>
 
-			<%= link_to '' do %>
+			<%= link_to 'users_password_edit' do %>
 			　 <button type="button" class="btn btn-primary">パスワードを変更する</button>
 			<% end %>
         </td>
@@ -15,7 +15,6 @@
 </table>
 <div class="container">
 	<div class="center" >
-		<div class="col-xs-3 col-xs-offset-9">
 			<div class="table">
 				<div class="table-title">
 					<h4 class="table-title">氏名
@@ -39,7 +38,6 @@
 				    </h4>
 				</div>
 			</div>
-		</div>
 	</div>
 </div>
 
@@ -52,7 +50,7 @@
 
 <h3>
 	<strong>注文履歴</strong>
-	<%= link_to '' do %>
+	<%= link_to 'public_users_orders' do %>
 	  <button type="button" class="btn btn-primary">一覧を見る</button>
 	<% end %>
 </h3>
