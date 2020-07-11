@@ -43,8 +43,9 @@ class Public::OrdersController < ApplicationController
 				@ad.save
 
 				@order.address = params[:deliveries][:address]
-				@order.name = params[:deliveries][:last_name]
+				@order.name = params[:deliveries][:name]
 				@order.postal_code = params[:deliveries][:postal_code]
+				@order.order_status = 0
 			end
 
 
