@@ -6,6 +6,7 @@
 				<th>配送先</th>
 				<th>注文商品</th>
 				<th>支払い金額</th>
+				<th>ステータス</th>
 				<th>注文詳細</th>
 			</tr>
 	</thead>
@@ -24,6 +25,7 @@
 				<% end %>
 			</td>
 			<td><%= addTax(order.oreder_details.sum(:tax_price))+800 %>円</td>
+			<td><%= order.order_status %></td>
 			<td><%= link_to public_order_path(order), class: "btn btn-success" do %>表示する<% end %></td>
 		</tr>
 		<% end %>

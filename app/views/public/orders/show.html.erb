@@ -52,10 +52,10 @@
 		</tr>
 	</thead>
 	<tbody>
+		 <% @order.oreder_details.each do |detail| %>
 		<tr>
-			  <% @order.oreder_details.each do |detail| %>
 				<td><%= detail.sweet.name %></td>
-				<td> <%= addTax(detail.sweet.tax_free_price) %>円</td>
+				<td> <%= addTax(detail.tax_price/detail.peace) %>円</td>
 				<td><%= detail.peace %>個</td>
 				<td><%= addTax(detail.tax_price) %>円</td>
 			  <% end %>
