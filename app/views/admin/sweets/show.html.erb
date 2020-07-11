@@ -7,27 +7,30 @@
 		</div>
 		<div class="col-xs-10">
 			<table class="">
-				<thead>
-					<th>商品名</th>
-					<th>商品紹介</th>
-					<th>ジャンル</th>
-					<th>価格</th>
-					<th>販売ステータス</th>
-				</thead>
-				<tbody>
 					<tr>
+						<th>商品名</th>
 						<td><%= @sweet.name %></td>
+					</tr>
+					<tr>
+						<th>商品紹介</th>
 						<td><%= @sweet.detail %></td>
+					</tr>
+					<tr>
+						<th>ジャンル</th>
 						<td><%= @sweet.genre.name %></td>
+					</tr>
+					<tr>
+						<th>価格</th>
 						<td>税込価格(税抜価格)
 						<%= (@sweet.tax_free_price * 1.1).to_i %>
-						(<%= @sweet.tax_free_price %>)
-						<%= @sweet.sale_status %></td>
+						(<%= @sweet.tax_free_price %>)円</td>
+					<tr>
+						<th>販売ステータス</th>
+						<td><%= @sweet.sale_status %></td>
 					</tr>
-				</tbody>
 			</table>
 
-			<%= link_to "編集する",  edit_admin_sweet_path(@sweet.id) %>
+			<%= link_to "編集する",  edit_admin_sweet_path(@sweet.id), class: "btn btn-primary" %>
 		</div>
 	</div>
 </div>

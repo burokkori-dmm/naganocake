@@ -13,14 +13,14 @@
 					<h3>商品説明</h3>
 						<%= f.text_area :detail %>
 					<h3>ジャンル</h3>
-						<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-						<%= f.collection_select(:genre_id, @genres, :id, :name)  %>
+						<!-- デフォルトを'選択して下さい'に設定 -->
+						<%= f.collection_select :genre_id, @genres, :id, :name, :include_blank => "選択して下さい" %>
 					<h3>税抜価格</h3>
 						<%= f.text_field :tax_free_price %>
 					<h3>販売ステータス</h3>
-						<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-					<%= f.select :sale_status, Sweet.sale_statuses.keys %>
-					<%= f.submit '新規登録' %>
+						<!-- デフォルトを'選択して下さい'に設定 -->
+					<%= f.select :sale_status, Sweet.sale_statuses.keys, include_blank: "選択して下さい" %>
+					<%= f.submit '新規登録', class: "btn btn-primary" %>
 			<% end %>
 		</div>
 	</div>

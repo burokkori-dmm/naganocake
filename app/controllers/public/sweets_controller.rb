@@ -2,6 +2,7 @@ class Public::SweetsController < ApplicationController
   def index
   	@sweets = Sweet.all
   	@genres = Genre.all
+    # @sweets2 = Sweet.page()
   end
 
   def show
@@ -10,16 +11,14 @@ class Public::SweetsController < ApplicationController
   	@cart_item = CartItem.new
   end
 
-  def new
-    # 例えば↓の@sweetsにジャンルid１のsweetを持ってきたい
-    # @sweets = Sweet.find_by(name)
-    # @genres = Genre.all
-  end
-
 
   def search
     @sweets = Sweet.all
+    @genre = Genre.find(params[:id])
+    @genres = Genre.all
   end
+  # @genre = Genre.find_by(id: params[:id])一個目のidと二個目のidについての認識　例：俺のタルト
+
 
 
   # ↓adminでは必要でpublicでは不要？何故？ちなみにこれがあるとshowの表示の際にエラーが出る↓

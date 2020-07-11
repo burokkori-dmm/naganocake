@@ -3,23 +3,35 @@
 			<div class="row">
 				<h1>商品情報編集</h1>
 					<%= form_for [:admin,@sweet] do |f| %>
-						<h3>商品画像</h3>
+						<div class="col-xs-3">
 							<%= attachment_image_tag @sweet, :image, :fill, 100, 100, format: 'jpeg' %>
 							<%= f.attachment_field :image %>
-					<h3>商品名</h3>
-						<%= f.text_field :name %>
-					<h3>商品説明</h3>
-						<%= f.text_area :detail %>
-					<h3>ジャンル</h3>
-						<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-						<%= f.collection_select(:genre_id, @genres, :id, :name)  %>
-					<h3>税抜価格</h3>
-						<%= f.text_field :tax_free_price %>
-					<h3>販売ステータス</h3>
-						<!-- カラムのデフォルトを'選択して下さい'に設定 -->
-						<%= f.select :sale_status, Sweet.sale_statuses.keys %>
-
-						<%= f.submit '変更を保存する' %>
+						</div>
+						<div class="col-xs-9">
+							<table class="">
+								<tr>
+									<th>商品名</th>
+									<td><%= f.text_field :name %></td>
+								</tr>
+								<tr>
+									<th>商品説明</th>
+									<td><%= f.text_area :detail %></td>
+								</tr>
+								<tr>
+									<th>ジャンル</th>
+									<td><%= f.collection_select(:genre_id, @genres, :id, :name)  %></td>
+								</tr>
+								<tr>
+									<th>税抜価格</th>
+									<td><%= f.text_field :tax_free_price %></td>
+								</tr>
+								<tr>
+									<th>販売ステータス</th>
+									<td><%= f.select :sale_status, Sweet.sale_statuses.keys %></td>
+								</tr>
+							</table>
+							<%= f.submit '変更を保存する', class: "btn btn-primary" %>
+						</div>
 					<% end %>
 			</div>
 		</div>
