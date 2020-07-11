@@ -1,0 +1,29 @@
+
+<%= form_with model:[:public, @delivery] do |form| %>
+
+	<%= form.label :郵便番号 %>
+	<%= form.text_field :postal_code, size: "30×10" %>
+
+	<%= form.label :住所 %>
+	<%= form.text_field :address %>
+
+	<%= form.label :宛名 %>
+	<%= form.text_field :name %>
+
+	<%= form.submit '登録する'%>
+<% end %>
+
+
+
+<%= @deliverys.each do |delivery| %>
+
+  <%= :郵便番号 %>
+  <%= delivery.postal_code %>
+
+  <%= :住所 %>
+  <%= delivery.address %>
+
+  <%= :宛名 %>
+  <%= delivery.name%>
+
+<% end %>

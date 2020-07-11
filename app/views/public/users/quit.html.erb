@@ -1,0 +1,20 @@
+<body>
+	<div align="center">
+		<h3><strong>本当に退会しますか？</strong></h3><br />
+		<br />
+		<ul>退会すると、会員登録情報や<br />
+			これまでの購入履歴が閲覧できなくなります。<br />
+			退会する場合は、「退会する」をクリックしてください。</ul>
+		<br />
+		<table>
+				<tr>
+					<td>
+					    <%= link_to "退会しない", edit_public_user_path %>
+				    	<% if user_signed_in? && @user.id == current_user.id %>
+                        <%= link_to "退会する", public_users_hide_path(current_user), method: :put %>
+				    	<% end %>
+				    </td>
+		        </tr>
+		</table>
+    </div>
+</body>

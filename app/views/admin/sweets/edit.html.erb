@@ -1,0 +1,37 @@
+
+	<div class="container">
+			<div class="row">
+				<h1>商品情報編集</h1>
+					<%= form_for [:admin,@sweet] do |f| %>
+						<div class="col-xs-3">
+							<%= attachment_image_tag @sweet, :image, :fill, 100, 100, format: 'jpeg' %>
+							<%= f.attachment_field :image %>
+						</div>
+						<div class="col-xs-9">
+							<table class="">
+								<tr>
+									<th>商品名</th>
+									<td><%= f.text_field :name %></td>
+								</tr>
+								<tr>
+									<th>商品説明</th>
+									<td><%= f.text_area :detail %></td>
+								</tr>
+								<tr>
+									<th>ジャンル</th>
+									<td><%= f.collection_select(:genre_id, @genres, :id, :name)  %></td>
+								</tr>
+								<tr>
+									<th>税抜価格</th>
+									<td><%= f.text_field :tax_free_price %></td>
+								</tr>
+								<tr>
+									<th>販売ステータス</th>
+									<td><%= f.select :sale_status, Sweet.sale_statuses.keys %></td>
+								</tr>
+							</table>
+							<%= f.submit '変更を保存する', class: "btn btn-primary" %>
+						</div>
+					<% end %>
+			</div>
+		</div>

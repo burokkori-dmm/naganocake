@@ -1,0 +1,65 @@
+
+<h2><%= @user.first_name, @user.last_name %>会員詳細</h2>
+<table border="3">
+	<thead>
+		<tr>
+			<th>顧客ID</th>
+			<th>氏名</th>
+			<th>フリガナ</th>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>電話番号</th>
+			<th>メールアドレス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= @user.each do |user| %>
+			<tr>
+				<td>
+				  <%= @user.id, @user.flag %>
+				</td>
+
+				<td>
+					<%= link_to 'admin_users_path(@user.edit)' do %>
+					  <%= @user.last_name, @user.first_name %>
+					<% end %>
+				</td>
+
+				<td>
+					<%= @user.sub_last_name, @user.sub_first_name %>
+				</td>
+
+				<td>
+					<%= @user.postal_code %>
+				</td>
+
+				<td>
+					<%= @user.address %>
+				</td>
+
+				<td>
+					<%= @user.phone_number %>
+				</td>
+
+				<td>
+					<%= @user.email %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+	<tbody>
+		<tr>
+			<td>
+		        <%= link_to 'edit_admin_user_path(@user)' do %>
+		            <input class="btn btn-primary" type="submit" value="編集する">
+		        <% end %>
+		    </td>
+		    
+		    <td>
+		    	<%= link_to 'admin_orders_path' do %>
+		    	    <input class="btn btn-primary" type="submit" value="注文履歴一覧">
+		    	<% end %>
+		    </td>
+		</tr>
+    </tbody>
+</table>
