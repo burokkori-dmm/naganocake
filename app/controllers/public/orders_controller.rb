@@ -47,13 +47,13 @@ class Public::OrdersController < ApplicationController
 				@order.postal_code = params[:deliveries][:postal_code]
 				@order.order_status = 0
 			end
-
-
-		if @order.save
 			current_user.cart_items.each do |i|
 				 @oreder_details = OrederDetail.new(sweet_id: i.sweet_id, tax_price: (i.sweet.tax_free_price*i.peace), peace: i.peace, making_status: 1, order_id: @order.id)
 				 @oreder_details.save!
 				end
+
+
+		if @order.save
 			redirect_to confirm_public_order_path(@order)
 		else
 			render :new
