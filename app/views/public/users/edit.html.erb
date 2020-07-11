@@ -28,13 +28,13 @@
 	<%= f.text_field :email %>
 
 	<h1>郵便番号(ハイフンなし)</h1>
-	<%= f.text_field :postalcode %>
+	<%= f.text_field :postal_code %>
 
 	<h1>住所</h1>
 	<%= f.text_field :address %>
 
 	<h1>電話番号(ハイフンなし)</h1>
-	<%= f.text_field :phonenumber%>
+	<%= f.text_field :phone_number%>
 <% end %>
 <table>
 	<tr>
@@ -42,7 +42,7 @@
 		    <%= link_to 'public_user_edit_path(current_user)' do %>
 		    <input class="btn btn-primary" type="submit" value="編集内容を保存する">
 		    <% end %>
-	    	<%= link_to 'public_user_quti_path(current_user)' do %>
+	    	<%= link_to 'public_path(current_user)' do %>
 	    	<input class="btn btn-primary" type="submit" value="退会する">
 	    	<% end %>
 	    </td>

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'homes/top'
+  end
   devise_for :users, controllers: { sessions: 'public/users/sessions',
                                        registrations: 'public/users/registrations', 
                                        passwords: 'public/users/passwords' }
+  devise_for :admins, controllers: { sessions: 'admin/admins/sessions',
+                                       registrations: 'admin/admins/registrations', 
+                                       passwords: 'admin/admins/passwords' }
 
   namespace :public do
     get 'homes/top'
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
    root 'public/home#top'
    namespace :public do
     get 'home/about'
-    resources :users
+    resource :user
     get 'users/quit/:id' => 'users#quit'
     put "/users/:id/hide" => "users#hide", as: 'users_hide'
     resources :deliveries
@@ -28,9 +34,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    devise_for :admins, controllers: { sessions: 'admin/admins/sessions',
-                                       registrations: 'admin/admins/registrations', 
-                                       passwords: 'admin/admins/passwords' }
     resources :genres
     resources :sweets
     resources :users

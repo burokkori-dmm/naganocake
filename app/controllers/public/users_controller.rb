@@ -2,12 +2,11 @@ class Public::UsersController < ApplicationController
 	#before_action :ensure_corrent_user, {only: [:edit, :update]}
 
   def show
-
       @user = current_user
   end
 
   def hide
-  	  @user = User.find(params[:id])
+  	  @user = currnet_user
   	  @user.update(flag: true)
   	  reset_session
   	  flash[:notice] = "ありがとうございました。またのご利用をこころよりお待ちしております。"
@@ -15,11 +14,11 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-  	  @user = User.find(params[:id])
+  	  @user = current_user
   end
 
   def update
-      @user = User.find(params[:id])
+      @user =current_user
       if @user.update(user_params)
          redirect_to user_path(@user.id)
       else
@@ -28,7 +27,7 @@ class Public::UsersController < ApplicationController
   end
 
   def quit
-      @user = User.find(params[:id])
+      @user = current_user
   end
 
   private
