@@ -1,57 +1,47 @@
 <h2>マイページ</h2>
-<h3><strong>登録情報</strong></h3>
-<table>
-	<tr>
-		<td>
-			<%= link_to '/public/user/edit' do %>
-			   <button type="button" class="btn btn-primary">編集する</button>
-			<% end %>
+	<h3><strong>登録情報</strong></h3>
+	<table>
+		<tr>
+			<td>
+				<%= link_to "編集する", edit_public_user_path %>
 
-			<%= link_to 'users_password_edit' do %>
-			　 <button type="button" class="btn btn-primary">パスワードを変更する</button>
-			<% end %>
-        </td>
-    </tr>
-</table>
-<div class="container">
-	<div class="center" >
-			<div class="table">
-				<div class="table-title">
-					<h4 class="table-title">氏名
-						<%= @user.last_name %><%= @user.first_name %>
-					</h4>
+				<%= link_to "パスワードを変更する", new_user_password_path %>
+	        </td>
+	    </tr>
+	</table>
+	<table>
+		<div class="table table-bordered">
+			<div class="table-title">
+				<h4 class="table-title">氏名
+					<%= @user.last_name %><%= @user.first_name %>
+				</h4>
 
-				    <h4 class="table-title">カナ
-				    	<%= @user.sub_last_name %><%= @user.sub_first_name %>
-				    </h4>
-				    <h4 class="table-title">郵便番号
-				    	<%= @user.postal_code %>
-				    </h4>
-				    <h4 class="table-title">住所
-				    	<%= @user.address %>
-				    </h4>
-				    <h4 class="table-title">電話番号
-                        <%= @user.phone_number %>
-				    </h4>
-				    <h4 class="table-title">メールアドレス
-				    	<%= @user.email %>
-				    </h4>
-				</div>
+			    <h4 class="table-title">カナ
+			    	<%= @user.sub_last_name %><%= @user.sub_first_name %>
+			    </h4>
+			    <h4 class="table-title">郵便番号
+			    	<%= @user.postal_code %>
+			    </h4>
+			    <h4 class="table-title">住所
+			    	<%= @user.address %>
+			    </h4>
+			    <h4 class="table-title">電話番号
+                    <%= @user.phone_number %>
+			    </h4>
+			    <h4 class="table-title">メールアドレス
+			    	<%= @user.email %>
+			    </h4>
 			</div>
-	</div>
-</div>
+		</div>
+	</table>
 
-<h3>
-	<strong>配送先</strong>
-	<%= link_to public_orders_path(@user) do %>
-	  <button type="button" class="btn btn-primary">一覧を見る</button>
-	<% end %>
-</h3>
+	<h3>
+		<strong>配送先</strong>
+		<%= link_to "配送先一覧をみる", public_orders_path(@user) %>
+	</h3>
 
-<h3>
-	<strong>注文履歴</strong>
-	<%= link_to 'public_users_orders' do %>
-	  <button type="button" class="btn btn-primary">一覧を見る</button>
-	<% end %>
-</h3>
+	<h3>
+		<strong>注文履歴</strong>
+		<%= link_to "注文履歴一覧を見る", public_orders_path %>
+	</h3>
 

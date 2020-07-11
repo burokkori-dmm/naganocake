@@ -9,11 +9,9 @@
 		<table>
 				<tr>
 					<td>
-					    <%= link_to 'public_users_edit' do %>
-					    <input class="btn btn-primary" type="submit" value="退会しない">
-					    <% end %>
+					    <%= link_to "退会しない", edit_public_user_path %>
 				    	<% if user_signed_in? && @user.id == current_user.id %>
-                        <%= link_to "退会する", users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-primary" type="submit" value="退会する" %>
+                        <%= link_to "退会する", public_users_hide_path(current_user), method: :put %>
 				    	<% end %>
 				    </td>
 		        </tr>
