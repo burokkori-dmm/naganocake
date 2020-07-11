@@ -55,8 +55,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_115712) do
     t.string "address"
     t.string "name"
     t.integer "postage", default: 800, null: false
-    t.integer "order_status"
-    t.integer "order_price"
+    t.integer "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_115712) do
     t.integer "order_id"
     t.integer "peace"
     t.integer "tax_price"
-    t.string "making_status"
+    t.integer "making_status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

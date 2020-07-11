@@ -2,9 +2,13 @@ class Public::OrdersController < ApplicationController
 
   def new
   	@user = current_user
+  	if @user.cart_items.blank?
+  		redirect_to public_cart_items_path
+  	else
   	@order = Order.new(user_id: @user.id)
   	@addres = @user.deliveries
   	@deliverys = Delivery.new(user_id: @user.id)
+    end
   end
 
   def show
@@ -21,13 +25,15 @@ class Public::OrdersController < ApplicationController
   	@addres = @user.deliveries
   	        if params[:_add] == "usersAdd"
 				@order.address = @user.address
-				@order.name = @user.select('last_name','first_name')
+				@order.name = @user.last_name + @user.first_name
 				@order.postal_code = @user.postal_code
+				@order.order_status = 0
 			elsif params[:_add] == "deliveryAdds"
 				@ad = @addres.find(params[:Delivery][:id])
 				@order.address = @ad.address
 				@order.name = @ad.name
 				@order.postal_code = @ad.postal_code
+				@order.order_status = 0
 			elsif params[:_add] == "newAdd"
 				@ad = Delivery.new
 				@ad.user_id = @user.id
@@ -36,28 +42,25 @@ class Public::OrdersController < ApplicationController
 				@ad.postal_code = params[:deliveries][:postal_code]
 				@ad.save
 
-				@order.ship_address = params[:deliveries][:address]
+				@order.address = params[:deliveries][:address]
 				@order.name = params[:deliveries][:last_name]
-				@order.ship_postal_code = params[:deliveries][:postal_code]
+				@order.postal_code = params[:deliveries][:postal_code]
 			end
 
 
-			item = []
-			@items = @user.cart_items
-				@items.each do |i|
-					item << @order.order_details.build(sweet_id: i.sweet_id, price: i.price, peace: i.peace, making_status: 1)
-				end
-			OrderDetail.import item
 		if @order.save
-			redirect_to confirm_order_path(@order)
+			current_user.cart_items.each do |i|
+				 @oreder_details = OrederDetail.new(sweet_id: i.sweet_id, tax_price: (i.sweet.tax_free_price*i.peace), peace: i.peace, making_status: 1, order_id: @order.id)
+				 @oreder_details.save!
+				end
+			redirect_to confirm_public_order_path(@order)
 		else
 			render :new
 		end
   end
 
   def success
-  	cart_items = current_user.cart_items
-	cart_items.destroy_all
+	current_user.cart_items.destroy_all
   end
 
   def index
@@ -69,14 +72,22 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-  	@order = Order.new(order_params)
+  	@order = Order.find(params[:id])
   	unless current_user.nil? || current_user.id == @order.user_id
 			redirect_to orders_path(id: current_user.id)
 		end
-		@items = @order.order_details
+		@items = @order.oreder_details
   end
 
    private
+
+   def order_params
+	 	params.require(:order).permit(
+	 		:user_id, :payment_method, :address, :postal_code, :name, :order_status, :postage,
+	 		deliveries:[:postal_code, :address, :name]
+	 		)
+	 end
+
     def item_params
       params.require(:cart_item).permit(:user, :sweet, :quantity, :price)
     end

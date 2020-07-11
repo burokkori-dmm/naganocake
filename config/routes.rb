@@ -18,9 +18,12 @@ Rails.application.routes.draw do
     get 'sweets/search/:id' => 'sweets#search',as: 'sweet_search'
     resources :cart_items
     delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_item_destroy_all'
-    resources :orders
-    get 'users/order/confirm' => 'orders#confirm'
-    get 'users/order/success' => 'orders#success'
+    resources :orders, only: [:index, :show, :new, :create] do
+    member do
+      get :confirm
+    end
+  end
+    get 'order/success' => 'orders#success'
 
   end
 
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
     resources :sweets
     resources :users
     resources :orders
-    patch 'orders/:id/order_details/:id' => 'order_details#update'
+    resources :oreder_details, except: [:new, :create, :edit, :show, :destroy, :index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

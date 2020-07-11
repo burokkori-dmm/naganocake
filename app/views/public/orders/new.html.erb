@@ -11,14 +11,14 @@
     	<br><%= current_user.last_name %> <%= current_user.first_name %></span>
     </div>
     <div>
-    	<lebel><%= radio_button_tag("_add", "deliverysAdds") %>登録済住所から選択</lebel>
+    	<lebel><%= radio_button_tag("_add", "deliveryAdds") %>登録済住所から選択</lebel>
     </div>
           <%= collection_select(Delivery, :id, @addres, :id, :full_name) %>
 
     <div><%= radio_button_tag("_add", "newAdd") %>新しいお届け先</div>
-    <%= fields_for :deliverys do |a| %>
-    <div>郵便番号（ハイフンなし）</div><%= a.text_field :postal_code, class:"form-control", id:"inputPostalCode", style:"width:30%;" %>
-    <div>住所</div><%= a.text_field :address, class:"form-control", id:"inputAddress", style:"width:70%;" %>
+    <%= fields_for :deliveries do |a| %>
+    <div>郵便番号（ハイフンなし）</div><%= a.text_field :postal_code, class:"form-control", style:"width:30%;" %>
+    <div>住所</div><%= a.text_field :address, class:"form-control", style:"width:70%;" %>
     <div>宛名</div><%= a.text_field :name,  class:"form-control col-xs-4", style:"width:30%;" %>
     <% end %>
 

@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-	before_action :authenticate_admin!
+
   def index
   	if params[:day]
       @orders = Order.created_today
@@ -10,13 +10,13 @@ class Admin::OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-    @items = @order.order_details
+    @oreder_details = @order.oreder_details
   end
 
   def update
   	@order = Order.find(params[:id])
     @order.update(order_params)
-  	redirect_to admins_orders_path
+  	redirect_back(fallback_location: root_path)
   end
 
   private
