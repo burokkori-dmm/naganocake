@@ -42,34 +42,6 @@
               <%= link_to "ログイン", new_user_session_path %>
             </li>
             <% end %>
-
-            <% if admin_signed_in? %>
-            <li>
-              <%= link_to "商品一覧", public_sweets_path %>
-            </li>
-            <li>
-              <%= link_to "会員一覧", admin_users_path %>
-            </li>
-            <li>
-              <%= link_to "注文一覧", admin_orders_path %>
-            </li>
-            <li>
-              <%= link_to "ジャンル一覧", admin_genres_path %>
-            </li>
-            <li>
-              <%= link_to "ログアウト", destroy_admin_session_path %>
-            </li>
-            <% else %>
-            <li>
-              <%= link_to "商品一覧", admin_sweets_path %>
-            </li>
-            <li>
-              <%= link_to "新規会員登録", new_admin_registration_path, method: :delete %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_admin_session_path %>
-            </li>
-            <% end %>
           </ul>
         </div>
         </nav>

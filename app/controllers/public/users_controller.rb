@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
   end
 
   def hide
-  	  @user = currnet_user
+  	  @user = current_user
   	  @user.update(flag: true)
   	  reset_session
   	  flash[:notice] = "ありがとうございました。またのご利用をこころよりお待ちしております。"
@@ -18,9 +18,9 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-      @user =current_user
+      @user = current_user
       if @user.update(user_params)
-         redirect_to user_path(@user.id)
+         redirect_to public_use_path(@user.id)
       else
          render 'edit'
       end
