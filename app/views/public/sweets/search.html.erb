@@ -19,13 +19,13 @@
 								<tr>
 									<td><%= attachment_image_tag sweet, :image, format: 'jpeg', size: "100x100" %></td>
 									<td><%= link_to sweet.name, public_sweet_path(sweet.id) %></td>
-									<td><%= sweet.tax_free_price %></td>
+									<td>¥<%= sweet.tax_free_price %></td>
 								</tr>
 							<% end %>
 						<% end %>
-						<%#= paginate @sweets %>
 					</tbody>
 				</table>
+				<%= paginate @sweets %>
 		</div>
 	</div>
 </div>
