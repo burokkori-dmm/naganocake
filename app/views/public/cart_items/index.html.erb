@@ -30,7 +30,7 @@
 						</td>
 						<!--数量-->
 						<td><%= form_for cart_item, url: public_cart_item_path(cart_item), method: :patch do |f| %>
-							  <%= f.select :peace, options_for_select((1..10).to_a, cart_item.peace)%>
+							  <%= f.select :peace, options_for_select((1..20).to_a, cart_item.peace)%>
 							  <%= f.submit '変更', class: "btn btn-primary"%>
 							<% end %>
 						</td>
