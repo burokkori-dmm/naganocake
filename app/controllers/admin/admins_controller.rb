@@ -1,6 +1,6 @@
 class Admin::AdminsController < ApplicationController
-  before_action :ensure_current_admin only: [:new, :create]
-  before_action :if_not_admin
+  #before_action :ensure_current_admin only: [:new, :create]
+  #before_action :if_not_admin
   def index
       @admin = current_admin
       @users = User.all
@@ -8,18 +8,18 @@ class Admin::AdminsController < ApplicationController
 
   def show
       @admin = current_admin
-      @user = current_user(params[:id])
+      @user = User.find(params[:id])
   end
 
   def edit
       @admin = current_admin
-      @user = current_user(params[:id])
+      @user = User.find(params[:id])
   end
 
   def update
-      @admin = currnt_admin
+      @admin = current_admin
       if @admin.update
-         redirect_to edit_admin_user_path
+         redirect_to edit_admin_admin_path
       else
          render 'show'
       end

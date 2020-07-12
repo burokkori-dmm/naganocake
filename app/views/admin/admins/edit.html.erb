@@ -1,5 +1,5 @@
 
-<h2><%= @user.first_name, @user.last_name %>の会員情報編集</h2>
+<h2><%= @user.first_name %><%= @user.last_name %>の会員情報編集</h2>
     <thead>
 		<tr>
 			<th>会員ID</th>
@@ -13,15 +13,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<%= @user.each do |user| %>
 			<tr>
 				<td>
 				  <%= @user.id %>
 				</td>
-                <%= form_for(@user) do |f| %>
 				<td>
 					<%= link_to 'admin_users_path(current_user)' do %>
-					  <%= @user.last_name, @user.first_name %>
+					  <%= @user.last_name %><%= @user.first_name %>
 					<% end %>
 				</td>
 
@@ -48,13 +46,6 @@
 				<td>
 					<%= @user.flag %>
 					<input type="radio" name="trigger" value="status">有効
-					<% if user_signed_in? && @user.id == current_user.id %>
-                        <%= link_to "退会済み", users_hide_path(current_user), method: :put, class: "btn btn-primary" type="radio" name="trigger" value="delete" %>
-				    	<% end %>
-				    <% end %>
 				</td>
-				<% end %>
 			</tr>
-		<% end %>
 	</tbody>
-	<tbody>

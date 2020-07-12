@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres
     resources :sweets
-    resources :users
+    resources :admins
     resources :orders
     resources :oreder_details, except: [:new, :create, :edit, :show, :destroy, :index]
   end
