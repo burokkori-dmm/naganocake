@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 2020_07_05_115712) do
   create_table "deliveries", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
-    t.string "postal_code"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postal_code"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -56,7 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_05_115712) do
     t.string "address"
     t.string "name"
     t.integer "postage", default: 800, null: false
-    t.integer "order_status", null: false
+    t.integer "order_status"
+    t.integer "order_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
