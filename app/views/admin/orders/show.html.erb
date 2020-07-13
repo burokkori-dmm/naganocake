@@ -50,13 +50,10 @@
 							<td><%= addTax(oreder_details.tax_price/oreder_details.peace) %></td>
 							<td><%= oreder_details.peace %></td>
 							<td><%= addTax(oreder_details.tax_price) %>円</td>
+							<td>
 							<%= form_for oreder_details, url:admin_oreder_detail_path(oreder_details), 
 							method: :patch do |f| %>
-							<td>
-								<%= f.select :making_status, OrederDetail.making_statuses.keys.to_a %>
-							</td>
-							<td>
-								<%= f.submit '更新', class:"btn btn-success" %>
+								<%= f.select :making_status, OrederDetail.making_statuses.keys.to_a %>    <%= f.submit '更新', class:"btn btn-success" %>
 							</td>
 							<% end %>
 						</tr>

@@ -1,6 +1,7 @@
 class Admin::AdminsController < ApplicationController
   #before_action :ensure_current_admin only: [:new, :create]
   #before_action :if_not_admin
+  before_action :authenticate_admin!
   def index
       @admin = current_admin
       @users = User.all
@@ -36,7 +37,8 @@ class Admin::AdminsController < ApplicationController
                                     :password, 
                                     :address, 
                                     :postal_code, 
-                                    :phone_number)
+                                    :phone_number,
+                                    :flag)
   end
   
   def if_not_admin
