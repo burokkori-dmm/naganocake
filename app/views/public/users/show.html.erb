@@ -13,11 +13,11 @@
 		<div class="table table-bordered">
 			<div class="table-title">
 				<h4 class="table-title">氏名
-					<%= @user.last_name %><%= @user.first_name %>
+					<%= @user.last_name %>  <%= @user.first_name %>
 				</h4>
 
 			    <h4 class="table-title">カナ
-			    	<%= @user.sub_last_name %><%= @user.sub_first_name %>
+			    	<%= @user.sub_last_name%>  <%= @user.sub_first_name %>
 			    </h4>
 			    <h4 class="table-title">郵便番号
 			    	<%= @user.postal_code %>
@@ -37,7 +37,7 @@
 
 	<h3>
 		<strong>配送先</strong>
-		<%= link_to "配送先一覧をみる", public_orders_path(@user) %>
+		<%= link_to "配送先一覧をみる", public_deliveries_path %>
 	</h3>
 
 	<h3>
