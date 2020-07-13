@@ -12,9 +12,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+       @cart_item = current_user.cart_items.find_or_initialize_by(sweet_id: params[:sweet_id])
        @cart_item = CartItem.new(cart_item_params)
        @cart_item.user_id = current_user.id
-       @cart_item = current_user.cart_items.find_or_initialize_by(sweet_id: params[:sweet_id])
        @cart_item.save
        redirect_to public_cart_items_path
       # @cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
