@@ -1,6 +1,4 @@
 class Public::OrdersController < ApplicationController
-	before_action :authenticate!
-	before_action :params_check, only: [:index]
 
   def new
   	@user = current_user
@@ -45,9 +43,8 @@ class Public::OrdersController < ApplicationController
 				@ad.save
 
 				@order.address = params[:deliveries][:address]
-				@order.name = params[:deliveries][:name]
+				@order.name = params[:deliveries][:last_name]
 				@order.postal_code = params[:deliveries][:postal_code]
-				@order.order_status = 0
 			end
 
 
@@ -91,17 +88,8 @@ class Public::OrdersController < ApplicationController
 	 		)
 	 end
 
-    def authenticate!
-      if admin_signed_in?
-      else
-      	authenticate_user!
-     end
-    end
-
-    def params_check
-    	if current_user.nil?
-    		redirect_to root_path
-    	end
+    def item_params
+      params.require(:cart_item).permit(:user, :sweet, :quantity, :price)
     end
 
 end

@@ -1,20 +1,15 @@
-<div class="container">
-	<div class="row">
-
-		<table class="">
-			<thead>
-				<h4>ジャンル検索</h4>
-			</thead>
-			<tbody>
-				<% @genres.each do |genre| %>
-					<% if genre.genre_status == "有効" %>
-						<tr>
-							<!-- ↓rails routesで出る:idについて:（）に入れるのは何故（genre）しか入らないのか？他のsweetを入れてもいいのでは？ -->
-							<td><%= link_to genre.name, public_sweet_search_path(genre) %></td>
-						</tr>
-					<% end %>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-</div>
+<table class="">
+	<thead>
+		<th>ジャンル検索</th>
+	</thead>
+	<tbody>
+		<% @genres.each do |genre| %>
+			<% if genre.genre_status == "有効" %>
+				<tr>
+					<!-- ↓rails routesで出る:idについて:（）に入れるのは何故（genre）しか入らないのか？他のsweetを入れてもいいのでは？ -->
+					<td><%= link_to genre.name, public_sweet_search_path(genre) %></td>
+				</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

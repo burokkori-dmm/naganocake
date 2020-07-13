@@ -37,7 +37,7 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
   # end
   def after_sign_up_path_for(resource)
       #beybug
-      root_path
+      public_sweets_path
   end  
   #private
 

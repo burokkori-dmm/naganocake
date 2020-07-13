@@ -1,8 +1,8 @@
 class Public::SweetsController < ApplicationController
   def index
-    @sweets = Sweet.all
-  	@sweets2 = Sweet.page(params[:page]).per(8).reverse_order
+  	@sweets = Sweet.all
   	@genres = Genre.all
+    # @sweets2 = Sweet.page()
   end
 
   def show
@@ -13,7 +13,7 @@ class Public::SweetsController < ApplicationController
 
 
   def search
-    @sweets = Sweet.page(params[:page]).per(10).reverse_order
+    @sweets = Sweet.all
     @genre = Genre.find(params[:id])
     @genres = Genre.all
   end

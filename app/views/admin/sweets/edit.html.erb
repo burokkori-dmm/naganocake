@@ -4,7 +4,7 @@
 				<h1>商品情報編集</h1>
 					<%= form_for [:admin,@sweet] do |f| %>
 						<div class="col-xs-3">
-							<%= attachment_image_tag @sweet, :image, :fill, 200, 200, format: 'jpeg' %>
+							<%= attachment_image_tag @sweet, :image, :fill, 100, 100, format: 'jpeg' %>
 							<%= f.attachment_field :image %>
 						</div>
 						<div class="col-xs-9">
@@ -23,7 +23,7 @@
 								</tr>
 								<tr>
 									<th>税抜価格</th>
-									<td><%= f.text_field :tax_free_price %>円</td>
+									<td><%= f.text_field :tax_free_price %></td>
 								</tr>
 								<tr>
 									<th>販売ステータス</th>

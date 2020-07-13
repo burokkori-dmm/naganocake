@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'homes/top'
-  end
   namespace :admins do
     get 'homes/top'
   end
@@ -14,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     get 'homes/top'
-    get 'home/about'
+    get 'homes/about'
   end
    root 'public/home#top'
    namespace :public do
@@ -39,7 +36,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres
     resources :sweets
-    resources :admins
+    resources :users
     resources :orders
     resources :oreder_details, except: [:new, :create, :edit, :show, :destroy, :index]
   end
