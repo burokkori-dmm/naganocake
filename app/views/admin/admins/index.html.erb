@@ -25,9 +25,11 @@
 						<%= user.email %>
 					</td>
 					<td>
-						<div align="center">
-						   <%= user.flag %>
-					    </div>
+						<% if user.flag == false %>
+						   <h4>有効</h4>
+						<% else %>
+						   <h4>退会済み</h4>
+						<% end %>
 					</td>
 				</tr>
 				<% end %>
