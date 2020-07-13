@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'public/users/sessions',
                                        registrations: 'public/users/registrations', 
                                        passwords: 'public/users/passwords' }
-  devise_for :admins, controllers: { sessions: 'admin/admins/sessions',
-                                       registrations: 'admin/admins/registrations', 
-                                       passwords: 'admin/admins/passwords' }
+  devise_for :admins, controllers: { sessions: 'admin/admins/sessions' }
 
   namespace :public do
     get 'homes/top'
