@@ -1,49 +1,43 @@
 
 <h2><%= @user.last_name %><%= @user.first_name %>の会員情報編集</h2>
-<table>
-    <div class="table table-bordered">
-    <div align="left">    
-    　　<div class="table-title">
-		  <div class="table-title">会員ID
-		  <%= @user.id %>
-		  </div>
 
-		<%= form_for [:admin, @user], url:admin_admin_path(@user) do |f| %>
+			    <h5 class="table-title">会員ID
+			        <%= @user.id %>
+			    </h5>
 
-            <div class="table-title">氏名
-			    <%= f.text_field :last_name %> <%= f.text_field :first_name %>
-		    </div>
+			<%= form_for [:admin, @user], url:admin_admin_path(@user) do |f| %>
 
-			<div class="table-title">フリガナ
-			    <%= f.text_field :sub_last_name %> <%= f.text_field :sub_first_name %>
-		    </div>
+	            <h5 class="table-title">氏名
+				    <%= f.text_field :last_name %> <%= f.text_field :first_name %>
+			    </h5>
 
-			<div class="table-title">郵便番号
-                <%= f.text_field :postal_code %>
-            </div>
+				<h5 class="table-title">フリガナ
+				    <%= f.text_field :sub_last_name %> <%= f.text_field :sub_first_name %>
+			    </h5>
 
-			<div class="table-title">住所
-                <%= f.text_field :address %>
-            </div>
+				<h5 class="table-title">郵便番号
+	                <%= f.text_field :postal_code %>
+	            </h5>
 
-			<div class="table-title">電話番号
-			    <%= f.text_field :phone_number%>
-		    </div>
+				<h5 class="table-title">住所
+	                <%= f.text_field :address %>
+	            </h5>
 
-		    <div class="table-title">メールアドレス
-			    <%= f.text_field :email %>
-		    </div>
-     
-			<div class="table-title">会員ステータス
-				<%= f.radio_button :flag, true %>
-				<%= f.label :flag, '退会', value: true %>
-				<%= f.radio_button :flag, false %>
-				<%= f.label :flag, '有効', value: false %>
-			</div>
-			<%= f.submit "編集を保存する" %>
-	    <% end %>
-		</div>
-	</div>
-	</div>
-</table>
+				<h5 class="table-title">電話番号
+				    <%= f.text_field :phone_number%>
+			    </h5>
+
+			    <h5 class="table-title">メールアドレス
+				    <%= f.text_field :email %>
+			    </h5>
+	     
+				<h5 class="table-title">会員ステータス
+					<%= f.radio_button :flag, true %>
+					<%= f.label :flag, '退会', value: true %>
+					<%= f.radio_button :flag, false %>
+					<%= f.label :flag, '有効', value: false %>
+				</h5>
+		
+	        <%= f.submit "編集を保存する" %>
+	        <% end %>
 	    
