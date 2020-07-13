@@ -1,50 +1,38 @@
 
-<h2><%= @user.first_name%><%= @user.last_name %>会員詳細</h2>
-<table border="3">
-	<thead>
-		<tr>
-			<th>顧客ID</th>
-			<th>氏名</th>
-			<th>フリガナ</th>
-			<th>郵便番号</th>
-			<th>住所</th>
-			<th>電話番号</th>
-			<th>メールアドレス</th>
-		</tr>
-	</thead>
-	<tbody>
-			<tr>
-				<td>
-				  <%= @user.id %><%= @user.flag %>
-				</td>
+<h2><%= @user.last_name%><%= @user.first_name %>さんの会員詳細</h2>
+<table>
+	<div class="table table-bordered">    
+    　　<div class="table-title">
 
-				<td>
-					<%= link_to 'admin_users_path(@user.edit)' do %>
-					  <%= @user.last_name %><%= @user.first_name %>
-					<% end %>
-				</td>
+		    <div class="table-title">顧客ID
+			  <%= @user.id %>  <%= @user.flag %>
+			</div>
+			
+			<div class="table-title">氏名
+			  <%= @user.last_name %>  <%= @user.first_name %>
+			</div>
 
-				<td>
-					<%= @user.sub_last_name%><%= @user.sub_first_name %>
-				</td>
+			<div class="table-title">フリガナ
+			  <%= @user.sub_last_name%>  <%= @user.sub_first_name %>
+			</div>
+			
+            <div class="table-title">郵便番号
+			  <%= @user.postal_code %>
+			</div>
 
-				<td>
-					<%= @user.postal_code %>
-				</td>
+            <div class="table-title">住所
+			  <%= @user.address %>
+			</div>
 
-				<td>
-					<%= @user.address %>
-				</td>
+            <div class="table-title">電話番号
+			  <%= @user.phone_number %>
+			</div>
 
-				<td>
-					<%= @user.phone_number %>
-				</td>
-
-				<td>
-					<%= @user.email %>
-				</td>
-			</tr>
-	</tbody>
+            <div class="table-title">メールアドレス
+			  <%= @user.email %>
+			</div>
+		</div>
+	</div>
 	<tbody>
 		<tr>
 			<td>

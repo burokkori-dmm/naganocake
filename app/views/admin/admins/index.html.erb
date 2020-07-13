@@ -1,33 +1,38 @@
-
-<div class="col-xs-4">
+<table>
 	<h2>会員一覧</h2>
-	<table border="" align="center">
-		<thead>
-			<tr>
-				<th><strong>会員ID</strong></th>
-			    <th><strong>氏名</strong></th>
-			    <th><strong>メールアドレス</strong><th>
-			    <th><strong>ステータス</strong></th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @users.each do |user| %>
-			<tr>
-				<td>
-					<%= user.id %>
-				</td>
-				<td>
-					<%= link_to (user.last_name + user.first_name), admin_admin_path(user) %>
-				</td>
-				<td>
-					<%= user.email %>
-				</td>
-				<td>
-					<%= user.flag %>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-</div>
+	<div class="table table-bordered"> 
+		<div align="center">
+			<thead>
+				<tr>
+					<th><strong>会員ID</strong></th>
+				    <th><strong>氏名</strong></th>
+				    <th><strong>メールアドレス</strong><th>
+				    <th><strong>ステータス</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |user| %>
+				<tr>
+					<td>
+						<%= user.id %>
+					</td>
+
+					<td>
+						<%= link_to (user.last_name + user.first_name), admin_admin_path(user) %>
+					</td>
+
+					<td>
+						<%= user.email %>
+					</td>
+					<td>
+						<div align="center">
+						   <%= user.flag %>
+					    </div>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+	　　</div>
+    </div>
+</table>
 			

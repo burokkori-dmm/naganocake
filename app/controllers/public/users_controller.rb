@@ -33,7 +33,14 @@ class Public::UsersController < ApplicationController
   private
   
   def user_params
-  	  params.require(:user).permit(:lastname, :firstname, :sublastname, :subfirstname, :email, :password, :address, :postalcode, :phonenumber)
+  	  params.require(:user).permit(:last_name, 
+                                    :first_name, 
+                                    :sub_last_name, 
+                                    :sub_first_name, 
+                                    :email,  
+                                    :address, 
+                                    :postal_code, 
+                                    :phone_number)
   end
   
   def ensure_corrent_user

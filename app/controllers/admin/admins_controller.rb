@@ -17,18 +17,26 @@ class Admin::AdminsController < ApplicationController
   end
 
   def update
-      @admin = current_admin
-      if @admin.update
-         redirect_to edit_admin_admin_path
+      @user = User.find(params[:id])
+      if @user.update(user_params)
+         redirect_to admin_admin_path(@user)
       else
-         render 'show'
+         render 'edit'
       end
   end
 
   private
   
-  def admin_params
-      params.require(:admin).permit(:email, :password)
+  def user_params
+      params.require(:user).permit(:last_name, 
+                                    :first_name, 
+                                    :sub_last_name, 
+                                    :sub_first_name, 
+                                    :email, 
+                                    :password, 
+                                    :address, 
+                                    :postal_code, 
+                                    :phone_number)
   end
   
   def if_not_admin
