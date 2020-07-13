@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_083118) do
+ActiveRecord::Schema.define(version: 2020_07_05_115712) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_083118) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -35,10 +36,10 @@ ActiveRecord::Schema.define(version: 2020_07_04_083118) do
   create_table "deliveries", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
+    t.string "postal_code"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "postal_code"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -55,8 +56,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_083118) do
     t.string "address"
     t.string "name"
     t.integer "postage", default: 800, null: false
-    t.integer "order_status"
-    t.integer "order_price"
+    t.integer "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
