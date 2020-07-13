@@ -5,7 +5,7 @@ before_action :setup_delivery, only: [ :edit, :update, :destroy]
   def index
     #一覧表示(each),新規投稿(form_for)
     @delivery = Delivery.new
-    @deliveries = Delivery.all
+    @deliveries = current_user.deliveries
   end
 
   def create

@@ -10,7 +10,7 @@
 			  </thead>
 			  <tbody>
 				    <tr>
-				      <% cart_items.each do |cart_item| %>
+				      <% @cart_items.each do |cart_item| %>
 						<td><%= attachment_image_tag cart_item.sweet, :image, :fill, 50, 50, format: 'jpg',fallback: "no-image-icon.jpg" %>
 							<%= cart_item.sweet.name %>
 						</td>
