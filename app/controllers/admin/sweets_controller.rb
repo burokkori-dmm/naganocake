@@ -1,8 +1,8 @@
 class Admin::SweetsController < ApplicationController
-
+  before_action :authenticate_admin!
   # 管理者が見る商品一覧画面
   def index
-    @sweets = Sweet.all
+    @sweets = Sweet.page(params[:page]).per(10)
 
   end
 

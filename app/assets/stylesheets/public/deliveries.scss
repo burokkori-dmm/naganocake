@@ -1,3 +1,36 @@
 // Place all the styles related to the Deliveries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*配送先一覧と編集ページ*/
+
+.delivery-page{
+
+}
+.delivery-form{
+	padding: 40px 200px;
+}
+.delivery-list{
+	padding: 30px;
+}
+
+
+/*部分テンプ_list*/
+
+.delivery_table1 , .delivery_table2, .delivery_table3, .delivery_table4{
+	width: 25%;
+	background-color: #b0c4de;
+}
+
+
+/*部分テンプ_form*/
+
+.form-button{
+	padding-left: 350px;
+}
+.form-space{
+	margin: 28px;
+}
+.form-space2{
+	margin: 55px;
+}
