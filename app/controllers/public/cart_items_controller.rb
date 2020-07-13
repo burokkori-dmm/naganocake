@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
 
-  #before_action :setup_cart_item!, only: [:update, :destroy]
+  #before_action :setup_cart_item, only: [:update, :destroy]
 
   def index
     #カート内商品を表示させる
@@ -12,14 +12,17 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-       @cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
-    if @cart_item.blank?
-       @cart_item = CartItem.new(cart_item_params)
+       @cart_item = current_user.cart_items.find_or_initialize_by(sweet_id: params[:sweet_id])
        @cart_item.user_id = current_user.id
-       @cart_item.peace += params[:peace].to_i
        @cart_item.save
-       redirect_to public_cart_items_path, notice: '商品をカートに追加しました！'
-    end
+       redirect_to public_cart_items_path
+      # @cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
+      # @cart_item.blank?
+      # @cart_item = CartItem.new(cart_item_params)
+      # @cart_item.user_id = current_user.id
+      # @cart_item.peace += params[:peace].to_i
+      # @cart_item.save
+      # redirect_to public_cart_items_path, notice: '商品をカートに追加しました！'
   end
 
   def update
@@ -43,12 +46,13 @@ class Public::CartItemsController < ApplicationController
     redirect_to public_cart_items_path
   end
 
-protected
+private
+
   def cart_item_params
     params.require(:cart_item).permit(:sweet_id, :peace, :user_id)
   end
 
-  # def setup_cart_item!
+  # def setup_cart_item
   #   cart_item = current_user.cart_items.find(params[:id])
   # end
 

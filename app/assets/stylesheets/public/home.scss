@@ -1,3 +1,37 @@
 // Place all the styles related to the public/Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about-page{
+	padding: 50px;
+}
+
+.home_about{
+	text-align: center;
+	font-size: 80px;
+}
+.about-detail{
+	text-align: center;
+	font-size: 20px;
+}
+
+/*写真はフリー素材*/
+
+.img_wrap{
+  border-radius: 10px;
+  width: 500px;
+  height: 450px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.img_wrap img{
+  width: 100%;
+  transform: scale(1.1);
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition-duration: 0.5s;
+}
+.img_wrap img:hover{
+  filter: grayscale(0);
+  transition-duration: 0.5s;
+}

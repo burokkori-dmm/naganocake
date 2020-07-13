@@ -1,8 +1,8 @@
 class Admin::SweetsController < ApplicationController
-
+  before_action :authenticate_admin!
   # 管理者が見る商品一覧画面
   def index
-    @sweets = Sweet.all
+    @sweets = Sweet.page(params[:page]).per(10)
 
   end
 
@@ -16,7 +16,7 @@ class Admin::SweetsController < ApplicationController
   def create
     sweet = Sweet.new(sweet_params)
     sweet.save
-    redirect_to admin_sweets_path
+    redirect_to admin_sweet_path(sweet.id)
   end
 
 # 管理者が見る商品の詳細画面

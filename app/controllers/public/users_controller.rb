@@ -20,7 +20,7 @@ class Public::UsersController < ApplicationController
   def update
       @user = current_user
       if @user.update(user_params)
-         redirect_to public_use_path(@user.id)
+         redirect_to public_user_path(@user.id)
       else
          render 'edit'
       end
@@ -33,7 +33,14 @@ class Public::UsersController < ApplicationController
   private
   
   def user_params
-  	  params.require(:user).permit(:lastname, :firstname, :sublastname, :subfirstname, :email, :password, :address, :postalcode, :phonenumber)
+  	  params.require(:user).permit(:last_name, 
+                                    :first_name, 
+                                    :sub_last_name, 
+                                    :sub_first_name, 
+                                    :email,  
+                                    :address, 
+                                    :postal_code, 
+                                    :phone_number)
   end
   
   def ensure_corrent_user

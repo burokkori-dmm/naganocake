@@ -1,12 +1,19 @@
 <h2>登録情報編集</h2>
 <%= form_for [:public, @user] do |f| %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+ 	<h2><%= pluralize(@user.errors.count, "個") %> のエラーがあります。:</h2>
+ 		<% @user.errors.full_messages.each do |msg| %>
+ 		  <li><%= msg %></li>
+        <% end %>
+  </div>
+<% end %>
 
-    <form>
     <h3>名前</h3>
 	<%= f.text_field :last_name %> <%= f.text_field :first_name %>
 
 	<h3>フリガナ</h3>
-	<%= f.text_field :sub_last_name %> <%= f.text_field :sub_last_name %>
+	<%= f.text_field :sub_last_name %> <%= f.text_field :sub_first_name %>
 
 	<h3>メールアドレス</h3>
 	<%= f.text_field :email %>
@@ -19,15 +26,12 @@
 
 	<h3>電話番号(ハイフンなし)</h3>
 	<%= f.text_field :phone_number%>
+	<p>
+	    <%= f.submit "編集を保存する" %>
+    	<%= link_to "退会する", public_path(current_user) %>
+    </p>
+
 <% end %>
-<table>
-	<tr>
-		<td>
-		    <%= link_to "編集をする", public_user_path %>
-	    	<%= link_to "退会する", public_path(current_user) %>
-	    </td>
-    </tr>
-</table>
 
 
 
