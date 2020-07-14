@@ -1,21 +1,19 @@
+
 <h2>新規会員登録</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
-        <h5>名前</h5>
-          <div class="field">
-            <%= f.label :"(姓)" %>
-            <%= f.text_field :last_name, autofocus: true, autocomplete: '姓' %>
-            <%= f.label :"(名)" %>
-            <%= f.text_field :first_name, autofocus: true, autocomplete: "名" %>
-          </div>
 
-          <h5>フリガナ</h5>
-        　<div class="field">
-            <%= f.label :"(セイ)" %>
-            <%= f.text_field :sub_last_name, autofocus: true, autocomplete: "セイ" %>
-            <%= f.label :"(メイ)" %>
-            <%= f.text_field :sub_first_name, autofocus: true, autocomplete: "メイ" %>
-          </div>
+　<h5>名前</h5>
+  <div class="field">
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "姓", placeholder: "姓" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "名", placeholder: "名" %>
+  </div>
+
+  <h5>フリガナ</h5>
+　<div class="field">
+    <%= f.text_field :sub_last_name, autofocus: true, autocomplete: "セイ", placeholder: "セイ" %>
+    <%= f.text_field :sub_first_name, autofocus: true, autocomplete: "メイ", placeholder: "メイ" %>
+  </div>
 
   <div class="field">
     <%= f.label :メールアドレス %><br />
@@ -55,6 +53,5 @@
   </div>
 <% end %>
 
-<h2>既に登録済みの方</h2>
-
-<%= render "public/users/shared/links" %>
+<h5>既に登録済みの方は<%= render "public/users/shared/links" %></h5>
+</html>
