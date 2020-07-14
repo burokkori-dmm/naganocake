@@ -15,8 +15,8 @@
 			<!-- link_toではなくform_forでカートない商品のcreateアクションへ飛ばす -->
 			<%= form_for @cart_item, url: public_cart_items_path do |f| %>
 		        <%= f.hidden_field :sweet_id, value: @sweet.id %>
+ 				<% if @sweet = current_user %>
 		        <%= f.select :peace, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-		        <% if @sweet = current_user %>
 		        	<%= f.submit "カートに入れる", class: "btn btn-primary"  %>
 		        <% end %>
     		<% end %>
