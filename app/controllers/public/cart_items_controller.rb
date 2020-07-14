@@ -15,8 +15,14 @@ class Public::CartItemsController < ApplicationController
        @cart_item = current_user.cart_items.find_or_initialize_by(sweet_id: params[:sweet_id])
        @cart_item = CartItem.new(cart_item_params)
        @cart_item.user_id = current_user.id
-       @cart_item.save
+       if @cart_item.save
        redirect_to public_cart_items_path
+       else
+       @sweet = Sweet.find(params[:cart_item][:sweet_id])
+       @genres = Genre.all
+       @cart_item = CartItem.new
+       render :'public/sweets/show'
+     end
       # @cart_item = current_user.cart_items.find_by(sweet_id: params[:sweet_id])
       # @cart_item.blank?
       # @cart_item = CartItem.new(cart_item_params)
