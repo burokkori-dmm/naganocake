@@ -3,6 +3,16 @@
 			<h1>商品新規登録</h1>
 
 			<%= form_for [:admin,@sweet] do |f| %>
+				<% if @sweet.errors.any? %>
+					<div id="error_explanation">
+				      <p><%= @sweet.errors.count %>件のエラーが発生しました。</p>
+				      <ul>
+					      <% @sweet.errors.full_messages.each do |message| %>
+					        <li><%= message %></li>
+					      <% end %>
+				      </ul>
+				    </div>
+				<% end %>
 				<div class="col-xs-3">
 					<h3>商品画像</h3>
 						<%= f.attachment_field :image %>

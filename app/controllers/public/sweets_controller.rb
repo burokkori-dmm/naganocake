@@ -13,7 +13,7 @@ class Public::SweetsController < ApplicationController
 
 
   def search
-    @sweets = Sweet.page(params[:page]).per(10).reverse_order
+    @sweets = Sweet.all
     @genre = Genre.find(params[:id])
     @genres = Genre.all
   end

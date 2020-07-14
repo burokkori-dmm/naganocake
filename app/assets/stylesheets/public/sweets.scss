@@ -1,3 +1,10 @@
 // Place all the styles related to the public/sweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.img_sweet_index:hover{
+	transform: scale(1.1, 1.1);
+}
+.text_sweet_index{
+  padding-top: 20px ;
+}

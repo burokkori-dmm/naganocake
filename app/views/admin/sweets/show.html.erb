@@ -31,6 +31,7 @@
 			</table>
 
 			<%= link_to "編集する",  edit_admin_sweet_path(@sweet.id), class: "btn btn-primary" %>
+			<%= link_to "削除する",  admin_sweet_path(@sweet.id), method: :delete, data: {confirm: "本当に削除しますか?"}, class: "btn btn-danger" %>
 		</div>
 	</div>
 </div>
