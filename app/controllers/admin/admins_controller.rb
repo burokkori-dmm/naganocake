@@ -2,9 +2,12 @@ class Admin::AdminsController < ApplicationController
   #before_action :ensure_current_admin only: [:new, :create]
   #before_action :if_not_admin
   before_action :authenticate_admin!
+
+  PER = 8
+
   def index
       @admin = current_admin
-      @users = User.all
+      @users = User.all(params[:id]).per(PER)
   end
 
   def show

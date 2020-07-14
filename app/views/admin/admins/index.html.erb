@@ -1,40 +1,38 @@
-<table>
-	<h2>会員一覧</h2>
-	<div class="table table-bordered"> 
-		<div align="center">
-			<thead>
-				<tr>
-					<th><strong>会員ID</strong></th>
-				    <th><strong>氏名</strong></th>
-				    <th><strong>メールアドレス</strong><th>
-				    <th><strong>ステータス</strong></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @users.each do |user| %>
-				<tr>
-					<td>
-						<%= user.id %>
-					</td>
+<h2>会員一覧</h2>
+    <table class="table">
+    	<caption>List of users</caption>
+        <thead class="thead-dark">
+            <tr>
+				<th scope="col">会員ID</th>
+			    <th scope="col">氏名</th>
+			    <th scope="col">メールアドレス</th>
+			    <th scope="col">ステータス</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<th scope="row">
+					<%= user.id %>		
+			    </th>
 
-					<td>
-						<%= link_to (user.last_name + user.first_name), admin_admin_path(user) %>
-					</td>
+				<td>
+					<%= link_to (user.last_name + user.first_name), admin_admin_path(user) %>
+				</td>
 
-					<td>
-						<%= user.email %>
-					</td>
-					<td>
-						<% if user.flag == false %>
-						   <h4>有効</h4>
-						<% else %>
-						   <h4>退会済み</h4>
-						<% end %>
-					</td>
-				</tr>
-				<% end %>
-			</tbody>
-	　　</div>
-    </div>
-</table>
-			
+				<td>
+					<%= user.email %>
+				</td>
+				<td>
+					<% if user.flag == false %>
+					   <h4>有効</h4>
+					<% else %>
+					   <h4>退会済み</h4>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+			<%= paginate @users %>
+		</tbody>
+    </table>
+		
