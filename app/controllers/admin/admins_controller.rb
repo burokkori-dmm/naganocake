@@ -3,11 +3,10 @@ class Admin::AdminsController < ApplicationController
   #before_action :if_not_admin
   before_action :authenticate_admin!
 
-  PER = 8
-
   def index
       @admin = current_admin
-      @users = User.all(params[:id]).per(PER)
+      @users = User.all
+      @users2 = User.page(params[:page]).per(8).reverse_order
   end
 
   def show
