@@ -38,6 +38,8 @@
 					<%= f.label :flag, '有効', value: false %>
 				</h5>
 		
-	        <%= f.submit "編集を保存する" %>
+	        <%= f.submit "編集を保存する", class: "btn btn-success" %>
+
+	        <%= link_to "戻る", admin_admin_path, class: "btn btn-primary" %>
 	        <% end %>
 	    

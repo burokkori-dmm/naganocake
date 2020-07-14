@@ -3,9 +3,9 @@
 	<table>
 		<tr>
 			<td>
-				<%= link_to "編集する", edit_public_user_path %>
+				<%= link_to "編集する", edit_public_user_path, class: "btn btn-primary" %>
 
-				<%= link_to "パスワードを変更する", edit_user_password_path %>
+				<%= link_to "パスワードを変更する", edit_user_password_path, class: "btn btn-primary" %>
 	        </td>
 	    </tr>
 	</table>
@@ -37,11 +37,11 @@
 
 	<h3>
 		<strong>配送先</strong>
-		<%= link_to "配送先一覧をみる", public_deliveries_path %>
+		<%= link_to "配送先一覧をみる", public_deliveries_path, class: "btn btn-primary" %>
 	</h3>
 
 	<h3>
 		<strong>注文履歴</strong>
-		<%= link_to "注文履歴一覧を見る", public_orders_path %>
+		<%= link_to "注文履歴一覧を見る", public_orders_path, class: "btn btn-primary" %>
 	</h3>
 

@@ -1,10 +1,9 @@
 
 <h2><%= @user.last_name%><%= @user.first_name %>さんの会員詳細</h2>
-<table>
-	<div class="table table-bordered">    
-    　　<div class="table-title">
+<table class="table">
+	<div class="table table-bordered">
 
-		    <div class="table-title">顧客ID
+		    <div scope="col">顧客ID
 			  <%= @user.id %>  <% if @user.flag == false %>
 						   　　　　　<span>有効会員</span>
 						　　　　<% else %>
@@ -12,40 +11,31 @@
 						　　　　<% end %>
 			</div>
 			
-			<div class="table-title">氏名
+			<div scope="col">氏名
 			  <%= @user.last_name %>  <%= @user.first_name %>
 			</div>
 
-			<div class="table-title">フリガナ
+			<div scope="col">フリガナ
 			  <%= @user.sub_last_name%>  <%= @user.sub_first_name %>
 			</div>
 			
-            <div class="table-title">郵便番号
+            <div scope="col">郵便番号
 			  <%= @user.postal_code %>
 			</div>
 
-            <div class="table-title">住所
+            <div scope="col">住所
 			  <%= @user.address %>
 			</div>
 
-            <div class="table-title">電話番号
+            <div scope="col">電話番号
 			  <%= @user.phone_number %>
 			</div>
 
-            <div class="table-title">メールアドレス
+            <div scope="col">メールアドレス
 			  <%= @user.email %>
 			</div>
-		</div>
 	</div>
-	<tbody>
-		<tr>
-			<td>
-		        <%= link_to "編集する", edit_admin_admin_path(@user) %>
-		    </td>
-		    
-		    <td>
-		    	<%= link_to "注文履歴一覧を見る", admin_orders_path %>
-		    </td>
-		</tr>
-    </tbody>
+		        <%= link_to "編集する", edit_admin_admin_path(@user), class: "btn btn-primary" %>
+		        
+		    	<%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-primary" %>
 </table>
