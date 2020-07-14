@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
 
-  #before_action :setup_cart_item, only: [:update, :destroy]
+  before_action :authenticate_user!
 
   def index
     #カート内商品を表示させる
@@ -30,7 +30,7 @@ class Public::CartItemsController < ApplicationController
     #数量変更時の変更
     cart_item = current_user.cart_items.find(params[:id])
     cart_item.update(cart_item_params)
-    redirect_to public_cart_items_path, cart_notice: '数量を変更しました！'
+    redirect_to public_cart_items_path
   end
 
   def destroy
@@ -52,6 +52,7 @@ private
   def cart_item_params
     params.require(:cart_item).permit(:sweet_id, :peace, :user_id)
   end
+
 
   # def setup_cart_item
   #   cart_item = current_user.cart_items.find(params[:id])
