@@ -32,15 +32,15 @@
 			</td>
 		</tr>
 	</table>
-
-
-	<table class="table table-bordered">
+<br><br>
+<div class="col-xs-8">
+	<table class="table">
 		<tr>
-			<th>商品名</th>
-			<th>単価(税込)</th>
-			<th>数量</th>
-			<th>小計</th>
-			<th>制作ステータス</th>
+			<th class="order-show">商品名</th>
+			<th class="order-show">単価(税込)</th>
+			<th class="order-show">数量</th>
+			<th class="order-show">小計</th>
+			<th class="order-show">制作ステータス</th>
 		</tr>
 
 
@@ -59,9 +59,11 @@
 						</tr>
 						<% end %>
 	</table>
-
-
-	<table class="table table-bordered">
+</div>
+<br>
+<br>
+<div class="col-xs-4">
+	<table>
 		<tr>
 			<th style="width:30%;">商品合計</th>
 			<td><%= addTax(@oreder_details.sum(:tax_price)) %>円</td>
@@ -76,5 +78,6 @@
 		</tr>
 	</table>
 	<hr>
+</div>
 </div>
 </div>

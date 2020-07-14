@@ -1,6 +1,7 @@
 <div class="container">
 <div class="row">
 <h4>注文履歴詳細</h4>
+<div class="col-xs-7">
 	<h5>注文情報</h5>
 <table class="table table-bordered ">
 		<tr>
@@ -24,7 +25,8 @@
 			<td><%= @order.order_status %></td>
 		</tr>
 </table>
-
+</div>
+<div class="col-xs-3">
 <h5>請求情報</h5>
 <table class="table table-bordered ">
 	<tbody>
@@ -42,7 +44,8 @@
 		</tr>
 	</tbody>
 </table>
-
+</div>
+<div class="col-xs-10">
 <h5>注文内容</h5>
 <table class="table table-bordered">
 	<thead>
@@ -64,5 +67,6 @@
 		</tr>
 	</tbody>
 </table>
+</div>
 </div>
 </div>
