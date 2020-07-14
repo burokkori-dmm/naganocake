@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   	if params[:day]
       @orders = Order.created_today
     else
-  	   @orders = Order.all
+  	   @orders = Order.page(params[:page]).reverse_order
     end
   end
 
