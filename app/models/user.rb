@@ -16,7 +16,7 @@ class User < ApplicationRecord
                 # \A 文頭、[a-z0-9] 小文字英数字のみ許可、\z 行末
                 #message: 'は小文字英数字で入力してください。' エラーメッセージを指定
               #}
-  validates :first_name, presence: true　
+  validates :first_name, presence: true
   validates :sub_last_name, presence: true
   validates :sub_first_name, presence: true
   validates :address, presence: true
