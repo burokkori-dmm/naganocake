@@ -1,10 +1,6 @@
 <h2>新規会員登録</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
-  <table>
-    <tbody>
-      <tr>
-      　<td>
         <h5>名前</h5>
           <div class="field">
             <%= f.label :"(姓)" %>
@@ -12,10 +8,7 @@
             <%= f.label :"(名)" %>
             <%= f.text_field :first_name, autofocus: true, autocomplete: "名" %>
           </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
+
           <h5>フリガナ</h5>
         　<div class="field">
             <%= f.label :"(セイ)" %>
@@ -23,10 +16,6 @@
             <%= f.label :"(メイ)" %>
             <%= f.text_field :sub_first_name, autofocus: true, autocomplete: "メイ" %>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
   <div class="field">
     <%= f.label :メールアドレス %><br />
