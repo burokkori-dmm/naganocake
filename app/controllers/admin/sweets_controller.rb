@@ -14,9 +14,13 @@ class Admin::SweetsController < ApplicationController
 
   # 管理者が商品を新規登録する（viewなし）
   def create
-    sweet = Sweet.new(sweet_params)
-    sweet.save
-    redirect_to admin_sweet_path(sweet.id)
+    @sweet = Sweet.new(sweet_params)
+    @genres = Genre.all
+    if @sweet.save
+       redirect_to admin_sweet_path(@sweet.id)
+    else
+       render :new
+    end
   end
 
 # 管理者が見る商品の詳細画面
@@ -34,6 +38,12 @@ class Admin::SweetsController < ApplicationController
   def update
     sweet = Sweet.find(params[:id])
     sweet.update(sweet_params)
+    redirect_to admin_sweets_path
+  end
+
+  def destroy
+    sweet = Sweet.find(params[:id])
+    sweet.destroy
     redirect_to admin_sweets_path
   end
 

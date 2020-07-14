@@ -35,3 +35,10 @@
   filter: grayscale(0);
   transition-duration: 0.5s;
 }
+
+.img_sweet_top:hover{
+  transform: scale(1.1, 1.1);
+}
+.text_sweet_top{
+  padding-top: 20px ;
+}
